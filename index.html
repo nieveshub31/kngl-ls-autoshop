@@ -48,7 +48,7 @@
         .image-zoom-box img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .image-zoom-box:hover img { transform: scale(1.1); }
 
-        /* Kadro Kartı Tıklama Efektli Arka Plan Parlaması */
+        /* Kadro Kartı Efektleri */
         .staff-card {
             position: relative;
             cursor: pointer;
@@ -232,45 +232,45 @@
     <section id="kadro" class="py-32 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-20" data-aos="fade-up">
             <h2 class="heading-font text-4xl font-bold tracking-tight mb-4 uppercase">Kadro <span class="text-red-600 italic">Hiyerarşisi</span></h2>
-            <p class="text-gray-500 text-[10px] uppercase tracking-widest">Kartlara tıklayarak personel dosyalarını ve operasyon kayıtlarını inceleyebilirsiniz</p>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">Kartlara tıklayarak personellerin detaylı dosyalarını ve özel efektli görsellerini açabilirsiniz</p>
             <div class="w-12 h-1 bg-red-600 mx-auto mt-4"></div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             
-            <div class="staff-card p-8 bg-black border-2 border-red-600 rounded-3xl hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] transition duration-300 relative group" data-aos="fade-up" onclick="openLightbox('images/bg-hero.jpg', 'KADRO DOSYASI: BOSS / FOUNDER')">
+            <div class="staff-card p-8 bg-black border-2 border-red-600 rounded-3xl hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] transition duration-300 relative group" data-aos="fade-up" onclick="openLightbox('images/boss.jpg', 'KADRO DOSYASI: LEVEL 05 • BOSS')">
                 <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
                 <span class="text-red-500 text-[10px] font-black uppercase tracking-[0.2em] mb-4 block">LEVEL 05</span>
                 <h4 class="heading-font text-2xl font-black mb-2 text-white tracking-tighter uppercase group-hover:text-red-500 transition">BOSS</h4>
-                <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">En üst düzey yönetim, stratejik kararlar ve kurumsal liderlik.</p>
+                <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">En üst düzey stratejik kararlar, yatırım ve tesis sahipliği.</p>
                 <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest block mt-auto"><i class="fa-solid fa-fingerprint mr-1"></i> DOSYAYI AÇ</span>
             </div>
 
-            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="100" onclick="openLightbox('images/tedarik.jpg', 'KADRO DOSYASI: YÖNETİCİ / TESİS KOORDİNATÖRÜ')">
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="100" onclick="openLightbox('images/yonetici.jpg', 'KADRO DOSYASI: LEVEL 04 • YÖNETİCİ')">
                 <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 04</span>
                 <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">YÖNETİCİ</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Tesis koordinasyonu, operasyonel planlama ve idari yönetim.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Müşteri koordinasyonu, finans yönetimi ve lojistik akış kontrolü.</p>
                 <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
 
-            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="200" onclick="openLightbox('images/gorsel-2.jpg', 'KADRO DOSYASI: BAŞ USTA / BAŞ MEKANİK')">
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="200" onclick="openLightbox('images/basusta.jpg', 'KADRO DOSYASI: LEVEL 03 • BAŞ USTA')">
                 <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 03</span>
                 <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">BAŞ USTA</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Ağır teknik revizyon, motor kurulumları ve kalite denetimi.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Performans modifikasyonları, motor rektefiye ve teknik denetim.</p>
                 <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
 
-            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="300" onclick="openLightbox('images/gorsel-1.jpg', 'KADRO DOSYASI: MEKANİK / TEKNİK UZMAN')">
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="300" onclick="openLightbox('images/mekanik.jpg', 'KADRO DOSYASI: LEVEL 02 • MEKANİK')">
                 <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 02</span>
                 <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">MEKANİK</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Elektronik arıza tespiti, periyodik bakım ve montaj uzmanlığı.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Elektronik arıza teşhis, şanzıman onarımı ve parça değişimi.</p>
                 <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
 
-            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="400" onclick="openLightbox('images/bg-hero.jpg', 'KADRO DOSYASI: ÇIRAK / TEKNİK EĞİTİM')">
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="400" onclick="openLightbox('images/cirak.jpg', 'KADRO DOSYASI: LEVEL 01 • ÇIRAK')">
                 <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 01</span>
                 <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">ÇIRAK</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Atölye düzeni, temel lojistik destek ve teknik eğitim süreci.</p>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Atölye tertip ve düzeni, takım tedariki ve temel teknik staj eğitimi.</p>
                 <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
 
@@ -333,7 +333,7 @@
     <div id="lightboxModal" class="fixed inset-0 z-[200] hidden bg-black/98 flex items-center justify-center p-6 backdrop-blur-2xl" onclick="closeLightbox()">
         <button class="absolute top-8 right-8 text-white text-4xl hover:text-red-600 transition">&times;</button>
         <div class="max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
-            <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl shadow-red-600/20 group">
+            <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl shadow-red-600/20">
                 <div class="absolute top-0 left-0 w-full h-1 bg-red-600/50 blur-[2px] animate-bounce z-10"></div>
                 <img id="lightboxImg" src="" class="max-h-[80vh] w-full object-contain">
             </div>
