@@ -47,6 +47,25 @@
 
         .image-zoom-box img { transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
         .image-zoom-box:hover img { transform: scale(1.1); }
+
+        /* Kadro Kartı Tıklama Efektli Arka Plan Parlaması */
+        .staff-card {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .staff-card:hover::before {
+            transform: translateX(100%);
+        }
     </style>
 </head>
 <body class="carbon-overlay selection:bg-red-600 selection:text-white">
@@ -213,30 +232,48 @@
     <section id="kadro" class="py-32 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-20" data-aos="fade-up">
             <h2 class="heading-font text-4xl font-bold tracking-tight mb-4 uppercase">Kadro <span class="text-red-600 italic">Hiyerarşisi</span></h2>
-            <div class="w-12 h-1 bg-red-600 mx-auto"></div>
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest">Kartlara tıklayarak personel dosyalarını ve operasyon kayıtlarını inceleyebilirsiniz</p>
+            <div class="w-12 h-1 bg-red-600 mx-auto mt-4"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition group">
-                <span class="text-red-600 text-xs font-bold uppercase tracking-widest mb-4 block">Seviye 01</span>
-                <h4 class="heading-font text-xl font-bold mb-2">Çırak</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Temel teknik eğitim ve atölye disiplini başlangıcı.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            
+            <div class="staff-card p-8 bg-black border-2 border-red-600 rounded-3xl hover:shadow-[0_0_30px_rgba(255,0,0,0.3)] transition duration-300 relative group" data-aos="fade-up" onclick="openLightbox('images/bg-hero.jpg', 'KADRO DOSYASI: BOSS / FOUNDER')">
+                <div class="absolute top-4 right-4 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+                <span class="text-red-500 text-[10px] font-black uppercase tracking-[0.2em] mb-4 block">LEVEL 05</span>
+                <h4 class="heading-font text-2xl font-black mb-2 text-white tracking-tighter uppercase group-hover:text-red-500 transition">BOSS</h4>
+                <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">En üst düzey yönetim, stratejik kararlar ve kurumsal liderlik.</p>
+                <span class="text-[9px] font-bold text-red-500 uppercase tracking-widest block mt-auto"><i class="fa-solid fa-fingerprint mr-1"></i> DOSYAYI AÇ</span>
             </div>
-            <div class="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition group">
-                <span class="text-red-600 text-xs font-bold uppercase tracking-widest mb-4 block">Seviye 02</span>
-                <h4 class="heading-font text-xl font-bold mb-2">Mekanik</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Uzmanlık alanı onarım ve rutin teknik bakım.</p>
+
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="100" onclick="openLightbox('images/tedarik.jpg', 'KADRO DOSYASI: YÖNETİCİ / TESİS KOORDİNATÖRÜ')">
+                <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 04</span>
+                <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">YÖNETİCİ</h4>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Tesis koordinasyonu, operasyonel planlama ve idari yönetim.</p>
+                <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
-            <div class="p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition group">
-                <span class="text-red-600 text-xs font-bold uppercase tracking-widest mb-4 block">Seviye 03</span>
-                <h4 class="heading-font text-xl font-bold mb-2">Baş Usta</h4>
-                <p class="text-gray-500 text-xs font-light leading-relaxed">Operasyonel denetim ve ağır teknik revizyon.</p>
+
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="200" onclick="openLightbox('images/gorsel-2.jpg', 'KADRO DOSYASI: BAŞ USTA / BAŞ MEKANİK')">
+                <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 03</span>
+                <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">BAŞ USTA</h4>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Ağır teknik revizyon, motor kurulumları ve kalite denetimi.</p>
+                <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
-            <div class="p-8 bg-red-600 rounded-3xl shadow-xl shadow-red-600/20 group">
-                <span class="text-white/60 text-xs font-bold uppercase tracking-widest mb-4 block text-white">Seviye 04</span>
-                <h4 class="heading-font text-xl font-bold mb-2 text-white">Yönetici</h4>
-                <p class="text-white/80 text-xs font-light leading-relaxed">Stratejik yönetim ve tesis koordinatörü.</p>
+
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="300" onclick="openLightbox('images/gorsel-1.jpg', 'KADRO DOSYASI: MEKANİK / TEKNİK UZMAN')">
+                <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 02</span>
+                <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">MEKANİK</h4>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Elektronik arıza tespiti, periyodik bakım ve montaj uzmanlığı.</p>
+                <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
             </div>
+
+            <div class="staff-card p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-red-600/50 transition group" data-aos="fade-up" data-aos-delay="400" onclick="openLightbox('images/bg-hero.jpg', 'KADRO DOSYASI: ÇIRAK / TEKNİK EĞİTİM')">
+                <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest mb-4 block">LEVEL 01</span>
+                <h4 class="heading-font text-xl font-bold mb-2 group-hover:text-red-500 transition">ÇIRAK</h4>
+                <p class="text-gray-500 text-xs font-light leading-relaxed mb-4">Atölye düzeni, temel lojistik destek ve teknik eğitim süreci.</p>
+                <span class="text-[9px] font-bold text-gray-400 group-hover:text-white transition uppercase tracking-widest block mt-auto"><i class="fa-solid fa-eye mr-1"></i> GÖRÜNTÜLE</span>
+            </div>
+
         </div>
     </section>
 
@@ -296,8 +333,11 @@
     <div id="lightboxModal" class="fixed inset-0 z-[200] hidden bg-black/98 flex items-center justify-center p-6 backdrop-blur-2xl" onclick="closeLightbox()">
         <button class="absolute top-8 right-8 text-white text-4xl hover:text-red-600 transition">&times;</button>
         <div class="max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
-            <img id="lightboxImg" src="" class="max-h-[85vh] rounded-[2rem] border border-white/10 shadow-2xl shadow-red-600/10">
-            <p id="lightboxCaption" class="heading-font text-xs text-gray-500 mt-6 tracking-[0.5em] font-bold uppercase"></p>
+            <div class="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl shadow-red-600/20 group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-red-600/50 blur-[2px] animate-bounce z-10"></div>
+                <img id="lightboxImg" src="" class="max-h-[80vh] w-full object-contain">
+            </div>
+            <p id="lightboxCaption" class="heading-font text-xs text-red-500 mt-6 tracking-[0.4em] font-bold uppercase bg-white/5 border border-white/10 px-6 py-2 rounded-full"></p>
         </div>
     </div>
 
@@ -330,6 +370,7 @@
         let progressStarted = false;
 
         window.addEventListener('scroll', () => {
+            if (!strategySection) return;
             const pos = strategySection.getBoundingClientRect().top;
             if (pos < window.innerHeight - 100 && !progressStarted) {
                 progressLines.forEach(line => line.style.width = line.getAttribute('data-width'));
@@ -359,6 +400,7 @@
         }
 
         window.addEventListener('scroll', () => {
+            if (!statsSection) return;
             const pos = statsSection.getBoundingClientRect().top;
             if (pos < window.innerHeight - 100 && !countStarted) {
                 countStarted = true;
@@ -366,6 +408,7 @@
             }
         });
 
+        // Ortak Açılış Fonksiyonu (Lightbox & Staff Reveal)
         function openLightbox(src, title) {
             document.getElementById('lightboxModal').classList.remove('hidden');
             document.getElementById('lightboxImg').src = src;
