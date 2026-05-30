@@ -3,429 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LS AutoShop | Mirror Park Profesyonel Mekanik Merkezi</title>
+    <title>LS AutoShop | Mirror Park Profesyonel Mekanik Yönetim Merkezi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#090d16',      /* Derin Siyah */
+                            card: '#111827',      /* Mat Gece Grisi */
+                            border: '#1f2937',    /* İnce Çizgi Grisi */
+                            red: '#dc2626',       /* Yarış Kırmızısı */
+                            redHover: '#b91c1c'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #f8fafc; 
-            color: #0f172a;
+            background-color: #090d16; 
+            color: #f3f4f6;
             overflow-x: hidden; 
         }
-        /* Pürüzsüz kart gölgeleri ve efektleri */
-        .premium-shadow {
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+        /* Premium cam ve gölge efektleri */
+        .glass-nav {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(12px);
         }
-        .corporate-card {
+        .premium-card {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.03);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .corporate-card:hover {
+        .premium-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.08);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(220, 38, 38, 0.1);
         }
         #lightboxModal {
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-red-600 selection:text-white">
+<body class="antialiased selection:bg-brand-red selection:text-white">
 
-    <div class="bg-slate-900 text-slate-400 text-xs py-2 px-6 border-b border-slate-800">
+    <div class="bg-[#05070f] text-slate-500 text-xs py-2.5 px-6 border-b border-brand-border">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-location-dot text-red-500 mr-1"></i> Mirror Park, Los Santos</span>
-                <span class="hidden sm:inline"><i class="fa-solid fa-clock text-red-500 mr-1"></i> 7/24 Kesintisiz Hizmet</span>
+                <span><i class="fa-solid fa-location-dot text-brand-red mr-1"></i> Mirror Park, Los Santos</span>
+                <span class="hidden sm:inline"><i class="fa-solid fa-clock text-brand-red mr-1"></i> 7/24 Kesintisiz Operasyon</span>
             </div>
             <div>
-                <span class="font-semibold text-slate-200">Mekanik İhale Sunumu | 2026</span>
+                <span class="font-semibold text-slate-400 tracking-wider uppercase text-[10px]">Mekanik İhale Sunumu &copy; 2026</span>
             </div>
         </div>
     </div>
 
-    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 px-6 py-4 transition-all duration-300 shadow-sm">
+    <nav class="sticky top-0 z-50 glass-nav border-b border-brand-border px-6 py-4 shadow-xl">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-2 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-                <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white text-xl shadow-md shadow-red-600/20 group-hover:rotate-12 transition-transform duration-300">
+            <div class="flex items-center space-x-2.5 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+                <div class="w-10 h-10 bg-brand-red rounded-xl flex items-center justify-center text-white text-xl shadow-lg shadow-brand-red/20 group-hover:rotate-12 transition-transform duration-300">
                     <i class="fa-solid fa-wrench"></i>
                 </div>
-                <span class="text-xl font-extrabold tracking-tight text-slate-900">LS <span class="text-red-600">AUTOSHOP</span></span>
+                <span class="text-xl font-black tracking-tight text-white">LS <span class="text-brand-red">AUTOSHOP</span></span>
             </div>
             
-            <div class="hidden lg:flex space-x-8 text-sm font-semibold tracking-wide text-slate-600">
-                <a href="#hakkimizda" class="hover:text-red-600 transition duration-200">Hakkımızda</a>
-                <a href="#hizmetler" class="hover:text-red-600 transition duration-200">Hizmetler</a>
-                <a href="#tedarik" class="hover:text-red-600 transition duration-200">Tedarik</a>
-                <a href="#ekonomik-katki" class="hover:text-red-600 transition duration-200">İstihdam</a>
-                <a href="#kariyer" class="hover:text-red-600 transition duration-200">Kariyer</a>
-                <a href="#etkinlikler" class="hover:text-red-600 transition duration-200">Topluluk</a>
-                <a href="#galeri" class="hover:text-red-600 transition duration-200">Galeri</a>
+            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest uppercase text-slate-400">
+                <a href="#vizyon" class="hover:text-brand-red transition duration-200">Vizyon</a>
+                <a href="#hizmetler" class="hover:text-brand-red transition duration-200">Hizmetler</a>
+                <a href="#tedarik" class="hover:text-brand-red transition duration-200">Tedarik</a>
+                <a href="#istihdam" class="hover:text-brand-red transition duration-200">İstihdam</a>
+                <a href="#kariyer" class="hover:text-brand-red transition duration-200">Kariyer</a>
+                <a href="#topluluk" class="hover:text-brand-red transition duration-200">Topluluk</a>
+                <a href="#galeri" class="hover:text-brand-red transition duration-200">Galeri</a>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <a href="#randevu" class="bg-slate-950 hover:bg-slate-800 text-white font-bold px-5 py-2.5 rounded-lg text-sm tracking-wide transition-all duration-200 shadow-sm">Talep Oluştur</a>
+            <div>
+                <a href="#iletisim" class="bg-brand-red hover:bg-brand-redHover text-white font-bold px-5 py-2.5 rounded-xl text-xs tracking-wider uppercase transition-all duration-200 shadow-lg shadow-brand-red/10">İş Teklifi Yap</a>
             </div>
         </div>
     </nav>
 
-    <header class="relative bg-slate-50 py-32 px-6 border-b border-slate-100 overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="max-w-5xl mx-auto text-center relative z-10" data-aos="fade-up">
-            <span class="text-red-600 font-bold tracking-widest uppercase text-xs bg-red-50 text-red-700 px-4 py-2 rounded-full border border-red-100 inline-block mb-6">KURUMSAL FAALİYET RAPORU</span>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 tracking-tight mb-6">MİRROR PARK<br><span class="text-red-600">LS AUTOSHOP</span></h1>
-            <p class="text-xl text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">Los Santos'un en gelişmiş altyapısına sahip, profesyonel ve kurumsal yeni nesil mekanik yönetim merkezi.</p>
+    <header class="relative py-36 px-6 overflow-hidden border-b border-brand-border bg-[#0b111e]">
+        <div class="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(#dc2626_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10" data-aos="fade-up">
+            <span class="text-brand-red font-bold tracking-widest uppercase text-[10px] bg-brand-red/10 px-4 py-2 rounded-full border border-brand-red/20 inline-block mb-6">Mekanik Faaliyet ve Yatırım Dosyası</span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-6 leading-tight">MİRROR PARK'IN<br><span class="text-brand-red">YENİ NESİL ÜSSÜ</span></h1>
+            <p class="text-lg md:text-xl text-slate-400 font-normal max-w-2xl mx-auto leading-relaxed">Los Santos'un en yüksek operasyonel kapasitesine sahip, liyakat esaslı ve kurumsal tam entegre mekanik merkezi.</p>
             
             <div class="mt-10 flex flex-wrap justify-center gap-4">
-                <a href="#hakkimizda" class="bg-red-600 hover:bg-red-700 text-white font-bold px-8 py-3.5 rounded-xl text-sm tracking-wide transition-all shadow-md shadow-red-600/10 hover:scale-[1.02]">İşletmeyi İncele</a>
-                <a href="#randevu" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 font-bold px-8 py-3.5 rounded-xl text-sm tracking-wide transition-all shadow-sm hover:scale-[1.02]">İletişime Geç</a>
+                <a href="#vizyon" class="bg-brand-red hover:bg-brand-redHover text-white font-bold px-8 py-4 rounded-xl text-xs tracking-wider uppercase transition-all shadow-lg shadow-brand-red/10 hover:scale-[1.02]">İşletmeyi Keşfet</a>
+                <a href="#iletisim" class="bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 font-bold px-8 py-4 rounded-xl text-xs tracking-wider uppercase transition-all hover:scale-[1.02]">İletişim & Randevu</a>
             </div>
         </div>
     </header>
 
-    <section id="hakkimizda" class="py-24 px-6 max-w-7xl mx-auto">
+    <section id="vizyon" class="py-28 px-6 max-w-7xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-stretch">
             <div class="flex flex-col justify-center" data-aos="fade-right">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// STRATEJİK HEDEFLER</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Geleceğin Otomotiv Standartlarını Belirliyoruz</h2>
-                <p class="text-slate-600 mb-8 leading-relaxed">Güçlü yönetim kadromuz ve sürdürülebilir iş modelimizle Mirror Park bölgesini Los Santos'un otomotiv üssü haline getirmek için çalışıyoruz.</p>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// STRATEJİK YÖNETİM</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-6">Sektör Standartlarını Yeniden İnşa Ediyoruz</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed text-sm">Disiplinsiz iş modellerini geride bırakarak; şeffaf fiyatlandırma, kurumsal parça tedariği ve profesyonel lojistik ağımızla Mirror Park'ı şehrin kalbi yapıyoruz.</p>
                 
                 <div class="space-y-4">
-                    <div class="p-5 bg-white border border-slate-100 rounded-xl premium-shadow flex gap-4">
-                        <div class="w-12 h-12 bg-red-50 text-red-600 rounded-lg flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-eye"></i></div>
+                    <div class="p-6 premium-card rounded-2xl flex gap-4 border-l-4 border-l-brand-red">
+                        <div class="w-12 h-12 bg-brand-red/10 text-brand-red rounded-xl flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-eye"></i></div>
                         <div>
-                            <h3 class="text-slate-900 font-bold text-base mb-1">Vizyonumuz</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Şehirdeki en hızlı, en güvenilir ve en kapsamlı mekanik hizmet ağını kurarak lider marka konumuna ulaşmak.</p>
+                            <h3 class="text-white font-bold text-base mb-1">Vizyonumuz</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Los Santos genelinde kesintisiz hizmet sunan, teknolojik altyapısı en güçlü mekanik organizasyonu olmak.</p>
                         </div>
                     </div>
-                    <div class="p-5 bg-white border border-slate-100 rounded-xl premium-shadow flex gap-4">
-                        <div class="w-12 h-12 bg-slate-50 text-slate-700 rounded-lg flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="p-6 premium-card rounded-2xl flex gap-4 border-l-4 border-l-white/20">
+                        <div class="w-12 h-12 bg-slate-800 text-slate-300 rounded-xl flex items-center justify-center text-xl shrink-0"><i class="fa-solid fa-bullseye"></i></div>
                         <div>
-                            <h3 class="text-slate-900 font-bold text-base mb-1">Misyonumuz</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed">Müşterilerimize şeffaf fiyatlandırma, sertifikalı uzmanlık ve kesintisiz operasyonel kalite sunarak topluluğa değer katmak.</p>
+                            <h3 class="text-white font-bold text-base mb-1">Misyonumuz</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed">Müşterilerimize eksiksiz cihaz analizi, orijinal yedek parça garantisi ve kusursuz bir premium alan deneyimi sunmak.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white p-8 md:p-12 rounded-2xl border border-slate-100 premium-shadow flex flex-col justify-center" data-aos="fade-left">
-                <h3 class="text-slate-900 font-bold text-xl mb-6 text-center md:text-left">Kurumsal Temel Değerlerimiz</h3>
+            <div class="bg-brand-card p-8 md:p-12 rounded-3xl border border-brand-border flex flex-col justify-center relative overflow-hidden" data-aos="fade-left">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-red/5 rounded-full blur-3xl"></div>
+                <h3 class="text-white font-bold text-lg mb-6 text-center md:text-left tracking-wide">Kurumsal Temel Değerlerimiz</h3>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="p-5 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                        <i class="fa-solid fa-shield-halved text-red-600 text-2xl mb-2"></i>
-                        <p class="font-bold text-sm text-slate-900 uppercase tracking-wide">Güvenilirlik</p>
+                    <div class="p-5 bg-brand-dark/50 rounded-xl border border-brand-border text-center">
+                        <i class="fa-solid fa-shield-halved text-brand-red text-2xl mb-2"></i>
+                        <p class="font-bold text-xs text-white uppercase tracking-wider">Güvenilirlik</p>
                     </div>
-                    <div class="p-5 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                        <i class="fa-solid fa-magnifying-glass text-red-600 text-2xl mb-2"></i>
-                        <p class="font-bold text-sm text-slate-900 uppercase tracking-wide">Şeffaflık</p>
+                    <div class="p-5 bg-brand-dark/50 rounded-xl border border-brand-border text-center">
+                        <i class="fa-solid fa-glass-water-droplet text-brand-red text-2xl mb-2"></i>
+                        <p class="font-bold text-xs text-white uppercase tracking-wider">Şeffaflık</p>
                     </div>
-                    <div class="p-5 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                        <i class="fa-solid fa-award text-red-600 text-2xl mb-2"></i>
-                        <p class="font-bold text-sm text-slate-900 uppercase tracking-wide">Üstün Kalite</p>
+                    <div class="p-5 bg-brand-dark/50 rounded-xl border border-brand-border text-center">
+                        <i class="fa-solid fa-award text-brand-red text-2xl mb-2"></i>
+                        <p class="font-bold text-xs text-white uppercase tracking-wider">Üstün Kalite</p>
                     </div>
-                    <div class="p-5 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                        <i class="fa-solid fa-infinity text-red-600 text-2xl mb-2"></i>
-                        <p class="font-bold text-sm text-slate-900 uppercase tracking-wide">Süreklilik</p>
+                    <div class="p-5 bg-brand-dark/50 rounded-xl border border-brand-border text-center">
+                        <i class="fa-solid fa-infinity text-brand-red text-2xl mb-2"></i>
+                        <p class="font-bold text-xs text-white uppercase tracking-wider">Süreklilik</p>
                     </div>
                 </div>
-                <div class="mt-4 p-4 bg-slate-900 rounded-xl text-center">
-                    <span class="font-semibold text-white text-xs uppercase tracking-wider"><i class="fa-solid fa-users text-red-500 mr-2"></i>Topluluk Odaklı İş Modeli</span>
+                <div class="mt-6 p-4 bg-brand-dark rounded-xl text-center border border-brand-border">
+                    <span class="font-bold text-brand-red text-xs uppercase tracking-widest"><i class="fa-solid fa-users mr-2"></i>Topluluk Odaklı Büyüme</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="hizmetler" class="bg-white py-24 px-6 border-y border-slate-100">
+    <section id="hizmetler" class="bg-[#0b111e] py-28 px-6 border-y border-brand-border">
         <div class="max-w-7xl mx-auto">
             <div class="grid lg:grid-cols-3 gap-12 items-center mb-16">
                 <div class="lg:col-span-1" data-aos="fade-right">
-                    <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// HİZMET KAPSAMI</span>
-                    <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-4">Profesyonel Mekanik Çözümler</h2>
-                    <p class="text-slate-600 text-sm leading-relaxed">Sadece standart bir tamirhane değil; muayene, modifikasyon, yol yardım ve kurumsal filo hizmetlerini tek çatı altında sunan entegre bir tesisiz.</p>
+                    <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// FAALİYET ALANLARI</span>
+                    <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">Profesyonel Mekanik Çözümler</h2>
+                    <p class="text-slate-400 text-sm leading-relaxed">İleri düzey teşhis donanımlarımız ve uzman usta kadromuzla, binek araçlardan ağır kurumsal filolara kadar her seviyede bakım yapıyoruz.</p>
                 </div>
-                <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-slate-100 shadow-lg h-64 bg-slate-100 relative group cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/galeri-1.jpg', 'Gelişmiş Atölye Alanı')">
+                <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-brand-border shadow-2xl h-72 bg-brand-card relative group cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/galeri-1.jpg', 'Gelişmiş Atölye Çalışma Alanı')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('images/galeri-1.jpg');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
-                        <span class="text-xs uppercase font-bold tracking-wider text-white bg-red-600 px-3 py-1.5 rounded-md shadow"><i class="fa-solid fa-expand mr-1"></i> Atölyeyi Büyük Gör</span>
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent flex items-end p-6">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-white bg-brand-red px-3 py-2 rounded-lg shadow-md"><i class="fa-solid fa-expand mr-1.5"></i> Görseli Büyüt</span>
                     </div>
                 </div>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up">
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-car-battery"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">Motor Bakım ve Onarım</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">İleri düzey arıza tespit (diagnostik) cihazları ile motor performansını sıfır hata ile optimize ediyoruz.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-car-battery"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">Motor Bakım ve Onarım</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Yeni nesil diagnostik cihazlarla motor testleri, mekanik revizyonlar ve tam performans optimizasyonu.</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-gears"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">Şanzıman İşlemleri</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Otomatik ve manuel vites kutularında kusursuz parça değişimi, revizyon ve periyodik yağ bakımı.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-gears"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">Şanzıman İşlemleri</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Otomatik ve manuel vites kutusu onarımları, tork konvertör revizyonu ve garantili parça değişimi.</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-gauge-high"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">Performans Modifikasyonları</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">İhtiyaca özel custom yazılım (ECU), mekanik güçlendirme ve pist/sokak optimizasyonları.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-gauge-high"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">Performans Modifikasyonları</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Araca özel ECU (yazılım) uygulamaları, egzoz sistemleri tasarımı ve yol/pist ayarları.</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-truck-pickup"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">7/24 Kesintisiz Yol Yardım</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Şehrin her noktasına anında ulaşım sağlayan profesyonel çekici ve mobil acil servis filosu.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-truck-pickup"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">7/24 Aktif Yol Yardım</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Los Santos'un her noktasına 15 dakika içinde ulaşım sağlayan profesyonel çekici ve acil müdahale ekibi.</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-clipboard-check"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">Şeffaf Ekspertiz Hizmeti</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Araç alım ve satım süreçlerinde mağduriyeti önleyen, tamamen dijital ve detaylı raporlama sistemi.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-clipboard-check"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">Profesyonel Ekspertiz</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">İkinci el araç alım satımlarında şüpheye yer bırakmayan şeffaf kaporta, motor ve mekanik check-up raporu.</p>
                 </div>
-                <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 corporate-card">
-                    <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 border border-slate-100 shadow-sm text-red-600 text-xl"><i class="fa-solid fa-handshake"></i></div>
-                    <h4 class="font-bold text-slate-900 mb-2 text-base">Kurumsal Filo Anlaşmaları</h4>
-                    <p class="text-slate-600 text-xs leading-relaxed">Lojistik firmaları ve resmi filolar için maliyetleri düşüren planlı periyodik bakım programları.</p>
+                <div class="p-6 rounded-2xl premium-card">
+                    <div class="w-12 h-12 bg-brand-dark rounded-xl flex items-center justify-center mb-4 border border-brand-border text-brand-red text-xl"><i class="fa-solid fa-handshake"></i></div>
+                    <h4 class="font-bold text-white mb-2 text-base">Kurumsal Filo Anlaşmaları</h4>
+                    <p class="text-slate-400 text-xs leading-relaxed">Şehirdeki büyük lojistik ve dağıtım firmaları için operasyonel maliyetleri düşüren planlı bakım planları.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="istatistik" class="py-16 bg-slate-900 text-white px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section class="py-20 bg-brand-dark text-white px-6 border-b border-brand-border relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
             <div data-aos="zoom-in" data-aos-delay="50">
-                <div class="text-4xl font-extrabold text-red-500 stats-count" data-target="150">0</div>
-                <p class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-2">Aylık Araç Kapasitesi</p>
+                <div class="text-4xl md:text-5xl font-black text-brand-red stats-count" data-target="150">0</div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-3">Aylık Araç Kapasitesi</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="100">
-                <div class="text-4xl font-extrabold text-red-500 stats-count" data-target="45">0</div>
-                <p class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-2">Tamamlanan Özel Proje</p>
+                <div class="text-4xl md:text-5xl font-black text-brand-red stats-count" data-target="45">0</div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-3">Özel Proje Teslimi</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="150">
-                <div class="text-4xl font-extrabold text-red-500 stats-count" data-target="24">0</div>
-                <p class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-2">7/24 Aktif Yol Yardım</p>
+                <div class="text-4xl md:text-5xl font-black text-brand-red stats-count" data-target="24">0</div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-3">7/24 Çekici Lojistik</p>
             </div>
             <div data-aos="zoom-in" data-aos-delay="200">
-                <div class="text-4xl font-extrabold text-red-500" style="display:inline-flex; align-items:center;">%<span class="stats-count" data-target="100">0</span></div>
-                <p class="text-xs text-slate-400 font-medium uppercase tracking-wider mt-2">Müşteri Memnuniyeti</p>
+                <div class="text-4xl md:text-5xl font-black text-brand-red" style="display:inline-flex; align-items:center;">%<span class="stats-count" data-target="100">0</span></div>
+                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-3">Müşteri Sadakati</p>
             </div>
         </div>
     </section>
 
-    <section id="tedarik" class="py-24 px-6 max-w-7xl mx-auto">
+    <section id="tedarik" class="py-28 px-6 max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// ALTYAPI GÜCÜ</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Sürdürülebilir Tedarik Zinciri ve Hammadde Erişimi</h2>
-                <p class="text-slate-600 text-sm leading-relaxed mb-6">İşletmemiz, şehir genelindeki hammadde krizlerinden etkilenmeyecek bağımsız bir tedarik ağına sahiptir. Parça tedarik sürelerini minimuma indirerek araçların atölyede kalma sürelerini kısaltıyoruz.</p>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// KESİNTİSİZ ALTYAPI</span>
+                <h2 class="text-3xl font-extrabold text-white mb-6">Sürdürülebilir Tedarik Zinciri & Hammadde Gücü</h2>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">LS AutoShop, şehirdeki küresel hammadde ve parça tedarik krizlerinden bağımsız çalışır. Geniş depolama hacmimiz sayesinde araçlar atölyede parça beklemez, en hızlı sürede yola döner.</p>
                 
-                <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider mb-3">Entegre Tedarik Ortaklarımız</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-slate-700 text-sm font-semibold">
-                    <div class="p-3 bg-white border border-slate-100 rounded-lg shadow-sm"><i class="fa-solid fa-recycle text-red-500 mr-2"></i> Geri Dönüşüm Ağı</div>
-                    <div class="p-3 bg-white border border-slate-100 rounded-lg shadow-sm"><i class="fa-solid fa-cubes text-red-500 mr-2"></i> Metal & Maden Cevheri</div>
-                    <div class="p-3 bg-white border border-slate-100 rounded-lg shadow-sm"><i class="fa-solid fa-industry text-red-500 mr-2"></i> Sanayi Üreticileri</div>
+                <h4 class="font-bold text-[10px] uppercase text-slate-500 tracking-widest mb-3">Entegre Altyapı Bağlantılarımız</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-slate-300 text-xs font-bold">
+                    <div class="p-3 bg-brand-card border border-brand-border rounded-xl"><i class="fa-solid fa-recycle text-brand-red mr-2"></i> Geri Dönüşüm Ağı</div>
+                    <div class="p-3 bg-brand-card border border-brand-border rounded-xl"><i class="fa-solid fa-cubes text-brand-red mr-2"></i> Bakır & Demir Cevheri</div>
+                    <div class="p-3 bg-brand-card border border-brand-border rounded-xl"><i class="fa-solid fa-industry text-brand-red mr-2"></i> Endüstri Ortakları</div>
                 </div>
             </div>
 
-            <div class="rounded-2xl overflow-hidden border border-slate-100 shadow-xl h-80 bg-slate-100 relative group cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/tedarik.jpg', 'Tedarik ve Altyapı Yönetimi')">
+            <div class="rounded-2xl overflow-hidden border border-brand-border shadow-2xl h-80 bg-brand-card relative group cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/tedarik.jpg', 'Tedarik ve Stok Yönetim Alanı')">
                 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('images/tedarik.jpg');"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent p-6 flex flex-col justify-end">
-                    <h5 class="text-white font-bold text-sm uppercase tracking-wide mb-1"><i class="fa-solid fa-chart-line text-red-500 mr-2"></i> Kesintisiz Stok Yönetimi</h5>
-                    <p class="text-slate-300 text-xs">Piyasa dalgalanmalarına karşı güçlü öz kaynak kullanımı ve hammadde depolama kapasitesi.</p>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent p-6 flex flex-col justify-end">
+                    <h5 class="text-white font-bold text-sm uppercase tracking-wide mb-1"><i class="fa-solid fa-chart-line text-brand-red mr-2"></i> Krizlere Karşı Dayanıklı Stok</h5>
+                    <p class="text-slate-400 text-xs">Piyasa dalgalanmalarına karşı güçlü öz kaynak kullanımı ve maden hammadde depolama gücü.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="ekonomik-katki" class="bg-white py-24 px-6 border-t border-slate-100">
+    <section id="istihdam" class="bg-[#0b111e] py-28 px-6 border-t border-brand-border">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// BÖLGESEL KALKINMA</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Ekonomik Katkı ve İstihdam Politikamız</h2>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4">LS AutoShop olarak yalnızca otomobil tamir etmiyoruz, şehir ekonomisine ve iş gücüne doğrudan katma değer sağlıyoruz.</p>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// MAKRO EKONOMİ</span>
+                <h2 class="text-3xl font-extrabold text-white mb-6">Bölgesel Kalkınma & İstihdam Politikası</h2>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">İşletmemiz, Mirror Park bölgesinde oluşturduğu yeni iş güçleriyle şehir ekonomisine doğrudan katma değer sağlar.</p>
                 
                 <div class="space-y-4 mt-6">
                     <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-red-500 mt-1"></i>
-                        <p class="text-slate-600 text-sm"><strong>Nitelikli Personel İstihdamı:</strong> Yeni mekanik uzmanları ve idari kadrolarla istihdama destek oluyoruz.</p>
+                        <i class="fa-solid fa-circle-check text-brand-red mt-1 shrink-0"></i>
+                        <p class="text-slate-400 text-sm"><strong>Nitelikli Teknik Kadro:</strong> Sertifikalı uzmanlar, çırak stajyer programları ve kurumsal idari kadro alımları.</p>
                     </div>
                     <div class="flex items-start gap-3">
-                        <i class="fa-solid fa-check text-red-500 mt-1"></i>
-                        <p class="text-slate-600 text-sm"><strong>Yan Sanayi Desteği:</strong> Yerel madencilik ve geri dönüşüm tesislerinden yaptığımız düzenli alımlarla üreticileri canlandırıyoruz.</p>
+                        <i class="fa-solid fa-circle-check text-brand-red mt-1 shrink-0"></i>
+                        <p class="text-slate-400 text-sm"><strong>Yan Sanayi Döngüsü:</strong> Geri dönüşüm ve maden tesislerinden yapılan hammadde alımlarıyla yerel sanayiye nakit akışı.</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 premium-shadow" data-aos="fade-left">
-                <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 text-center">Stratejik Sektörel Etki Tablosu</h3>
-                <div class="space-y-2 text-xs font-semibold">
-                    <div class="p-3 bg-white rounded-lg border border-slate-100 flex justify-between">
-                        <span class="text-slate-500 uppercase">Maden Sektörü</span>
-                        <span class="text-red-600">YÜKSEK DESTEK / HAMMADDE AKIŞI</span>
+            <div class="p-6 md:p-8 rounded-2xl premium-card" data-aos="fade-left">
+                <h3 class="text-xs font-bold text-white uppercase tracking-widest mb-5 text-center">Stratejik Sektörel Etki Raporu</h3>
+                <div class="space-y-2.5 text-xs font-bold">
+                    <div class="p-4 bg-brand-dark rounded-xl border border-brand-border flex justify-between">
+                        <span class="text-slate-400 uppercase tracking-wider">Madencilik Sektörü</span>
+                        <span class="text-brand-red">YÜKSEK STRATEJİK DESTEK</span>
                     </div>
-                    <div class="p-3 bg-white rounded-lg border border-slate-100 flex justify-between">
-                        <span class="text-slate-500 uppercase">Geri Dönüşüm</span>
-                        <span class="text-red-600">HAMMADDE GİRİŞİ</span>
+                    <div class="p-4 bg-brand-dark rounded-xl border border-brand-border flex justify-between">
+                        <span class="text-slate-400 uppercase tracking-wider">Geri Dönüşüm</span>
+                        <span class="text-brand-red">SÜREKLİ HAMMADDE GİRİŞİ</span>
                     </div>
-                    <div class="p-3 bg-white rounded-lg border border-slate-100 flex justify-between">
-                        <span class="text-slate-500 uppercase">Araç Ticareti</span>
-                        <span class="text-emerald-600">GÜVENLİ EKSPERTİZ BAĞI</span>
+                    <div class="p-4 bg-brand-dark rounded-xl border border-brand-border flex justify-between">
+                        <span class="text-slate-400 uppercase tracking-wider">Araç Ticareti</span>
+                        <span class="text-emerald-500">DİJİTAL EKSPERTİZ GÜVENİ</span>
                     </div>
-                    <div class="p-3 bg-white rounded-lg border border-slate-100 flex justify-between">
-                        <span class="text-slate-500 uppercase">Lojistik Sektörü</span>
-                        <span class="text-emerald-600">OPERASYONEL İŞ BİRLİĞİ</span>
+                    <div class="p-4 bg-brand-dark rounded-xl border border-brand-border flex justify-between">
+                        <span class="text-slate-400 uppercase tracking-wider">Lojistik / Filo</span>
+                        <span class="text-emerald-500">OPERASYONEL ENTEGRASYON</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="kariyer" class="py-24 px-6 max-w-7xl mx-auto border-t border-slate-100">
+    <section id="kariyer" class="py-28 px-6 max-w-7xl mx-auto border-t border-brand-border">
         <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-            <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// LİYAKAT VE ROLLER</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Organizasyon Yapısı & Kariyer</h2>
-            <p class="text-slate-600 text-sm">Şeffaf yükselme basamakları ve disiplinli yönetim kadromuzla şehrin en yetkin ekibini kuruyoruz.</p>
+            <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// HİYERARŞİ VE LİYAKAT</span>
+            <h2 class="text-3xl font-extrabold text-white mb-3">Organizasyon Yapısı ve Gelişim</h2>
+            <p class="text-slate-400 text-sm">Disiplinli komuta zincirimiz ve şeffaf yükselme kademelerimizle hata payını sıfıra indiriyoruz.</p>
         </div>
 
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 text-center mb-12" data-aos="fade-up">
-            <div class="bg-white p-4 rounded-xl border border-red-200 shadow-sm"><p class="text-[10px] text-red-600 uppercase font-bold tracking-wider">Yönetim</p><h5 class="text-sm font-bold text-slate-900 mt-1">İşletme Müdürü</h5></div>
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Teknik Lider</p><h5 class="text-sm font-bold text-slate-900 mt-1">Baş Usta</h5></div>
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Saha</p><h5 class="text-sm font-bold text-slate-900 mt-1">Mekanik Uzmanları</h5></div>
-            <div class="bg-white p-4 rounded-xl border border-slate-100 shadow-sm"><p class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Operasyon</p><h5 class="text-sm font-bold text-slate-900 mt-1">Tedarik Sorumlusu</h5></div>
+            <div class="p-4 bg-brand-card rounded-xl border border-brand-red/30 shadow-md"><p class="text-[10px] text-brand-red uppercase font-bold tracking-wider">Üst Yönetim</p><h5 class="text-sm font-bold text-white mt-1">İşletme Müdürü</h5></div>
+            <div class="p-4 bg-brand-card rounded-xl border border-brand-border shadow-md"><p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Teknik Denetim</p><h5 class="text-sm font-bold text-white mt-1">Baş Usta</h5></div>
+            <div class="p-4 bg-brand-card rounded-xl border border-brand-border shadow-md"><p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Saha Uzmanlığı</p><h5 class="text-sm font-bold text-white mt-1">Mekanik Ustaları</h5></div>
+            <div class="p-4 bg-brand-card rounded-xl border border-brand-border shadow-md"><p class="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Planlama</p><h5 class="text-sm font-bold text-white mt-1">Tedarik Sorumlusu</h5></div>
         </div>
 
-        <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-100 premium-shadow" data-aos="zoom-in">
-            <h4 class="text-center text-xs font-bold text-slate-900 mb-8 tracking-wider uppercase">Kariyer Gelişim Sistemi</h4>
+        <div class="p-6 md:p-8 rounded-3xl premium-card" data-aos="zoom-in">
+            <h4 class="text-center text-xs font-bold text-white mb-8 tracking-widest uppercase">Kariyer Yükselme Basamakları</h4>
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-2">
                 <div class="text-center w-full">
-                    <div class="w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 shadow">1</div>
-                    <h6 class="font-bold text-slate-900 text-xs uppercase">Çırak</h6>
+                    <div class="w-8 h-8 bg-brand-red text-white rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 shadow-lg shadow-brand-red/20">1</div>
+                    <h6 class="font-bold text-white text-xs uppercase tracking-wide">Çırak</h6>
                 </div>
-                <div class="hidden md:block h-0.5 bg-slate-100 flex-1"></div>
+                <div class="hidden md:block h-[1px] bg-brand-border flex-1"></div>
                 <div class="text-center w-full">
-                    <div class="w-8 h-8 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-slate-200">2</div>
-                    <h6 class="font-bold text-slate-900 text-xs uppercase">Mekanik</h6>
+                    <div class="w-8 h-8 bg-brand-dark text-slate-400 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-brand-border">2</div>
+                    <h6 class="font-bold text-slate-400 text-xs uppercase tracking-wide">Mekanik</h6>
                 </div>
-                <div class="hidden md:block h-0.5 bg-slate-100 flex-1"></div>
+                <div class="hidden md:block h-[1px] bg-brand-border flex-1"></div>
                 <div class="text-center w-full">
-                    <div class="w-8 h-8 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-slate-200">3</div>
-                    <h6 class="font-bold text-slate-900 text-xs uppercase">Kıdemli Mekanik</h6>
+                    <div class="w-8 h-8 bg-brand-dark text-slate-400 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-brand-border">3</div>
+                    <h6 class="font-bold text-slate-400 text-xs uppercase tracking-wide">Kıdemli Usta</h6>
                 </div>
-                <div class="hidden md:block h-0.5 bg-slate-100 flex-1"></div>
+                <div class="hidden md:block h-[1px] bg-brand-border flex-1"></div>
                 <div class="text-center w-full">
-                    <div class="w-8 h-8 bg-slate-100 text-slate-700 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-slate-200">4</div>
-                    <h6 class="font-bold text-slate-900 text-xs uppercase">Baş Usta</h6>
+                    <div class="w-8 h-8 bg-brand-dark text-slate-400 rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1 border border-brand-border">4</div>
+                    <h6 class="font-bold text-slate-400 text-xs uppercase tracking-wide">Baş Usta</h6>
                 </div>
-                <div class="hidden md:block h-0.5 bg-slate-100 flex-1"></div>
+                <div class="hidden md:block h-[1px] bg-brand-border flex-1"></div>
                 <div class="text-center w-full">
-                    <div class="w-8 h-8 bg-slate-900 text-white rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1">5</div>
-                    <h6 class="font-bold text-slate-900 text-xs uppercase">Yönetici</h6>
+                    <div class="w-8 h-8 bg-white text-brand-dark rounded-full flex items-center justify-center font-bold mx-auto text-xs mb-1">5</div>
+                    <h6 class="font-bold text-white text-xs uppercase tracking-wide">Yönetici</h6>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="etkinlikler" class="bg-white py-24 px-6 border-t border-slate-100">
+    <section id="topluluk" class="bg-[#0b111e] py-28 px-6 border-t border-brand-border">
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// SOSYAL ENTEGRASYON</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Mirror Park Topluluk Etkinlikleri</h2>
-                <p class="text-slate-600 text-sm">Mirror Park bölgesini otomobil kültürünün ve sosyal yaşamın merkezi haline getiriyoruz.</p>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// SOSYAL KÜLTÜR</span>
+                <h2 class="text-3xl font-extrabold text-white mb-3">Mirror Park Otomobil Kültürü Merkez Üssü</h2>
+                <p class="text-slate-400 text-sm">Sadece servis hizmeti değil, bölgeyi canlandıracak güçlü sosyal etkinlik planlamaları.</p>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12" data-aos="fade-up">
-                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <div class="text-red-600 text-lg mb-2"><i class="fa-solid fa-calendar-days"></i></div>
-                    <h5 class="font-bold text-slate-900 text-sm mb-1">Haftalık Car Meet</h5>
-                    <p class="text-slate-500 text-xs leading-relaxed">Mirror Park gölü çevresinde düzenli tematik araç sergileri.</p>
+                <div class="p-5 bg-brand-card border border-brand-border rounded-xl">
+                    <div class="text-brand-red text-xl mb-2"><i class="fa-solid fa-calendar-days"></i></div>
+                    <h5 class="font-bold text-white text-sm mb-1">Haftalık Car Meet</h5>
+                    <p class="text-slate-400 text-xs leading-relaxed">Göl çevresinde düzenli lüks ve modifiye araç sergileri.</p>
                 </div>
-                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <div class="text-red-600 text-lg mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
-                    <h5 class="font-bold text-slate-900 text-sm mb-1">Drift ve Yarış Geceleri</h5>
-                    <p class="text-slate-500 text-xs leading-relaxed">Lisanslı ve güvenli alanlarda legal drift organizasyonları.</p>
+                <div class="p-5 bg-brand-card border border-brand-border rounded-xl">
+                    <div class="text-brand-red text-xl mb-2"><i class="fa-solid fa-flag-checkered"></i></div>
+                    <h5 class="font-bold text-white text-sm mb-1">Yarış & Drift Etkinlikleri</h5>
+                    <p class="text-slate-400 text-xs leading-relaxed">Güvenli ve lisanslı alanlarda legal motor sporları şovları.</p>
                 </div>
-                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <div class="text-red-600 text-lg mb-2"><i class="fa-solid fa-chalkboard-user"></i></div>
-                    <h5 class="font-bold text-slate-900 text-sm mb-1">Mekanik Workshoplar</h5>
-                    <p class="text-slate-500 text-xs leading-relaxed">Halka açık temel araç bakımı ve arıza müdahale seminerleri.</p>
+                <div class="p-5 bg-brand-card border border-brand-border rounded-xl">
+                    <div class="text-brand-red text-xl mb-2"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h5 class="font-bold text-white text-sm mb-1">Mekanik Workshop</h5>
+                    <p class="text-slate-400 text-xs leading-relaxed">Halka açık temel motor bakımı ve acil durum müdahale eğitimleri.</p>
                 </div>
-                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
-                    <div class="text-red-600 text-lg mb-2"><i class="fa-solid fa-gift"></i></div>
-                    <h5 class="font-bold text-slate-900 text-sm mb-1">Ödüllü Yarışmalar</h5>
-                    <p class="text-slate-500 text-xs leading-relaxed">Sponsorlu etkinlikler ve "Haftanın En İyi Tasarımlı Aracı" ödülleri.</p>
+                <div class="p-5 bg-brand-card border border-brand-border rounded-xl">
+                    <div class="text-brand-red text-xl mb-2"><i class="fa-solid fa-trophy"></i></div>
+                    <h5 class="font-bold text-white text-sm mb-1">Büyük Ödüllü Çekilişler</h5>
+                    <p class="text-slate-400 text-xs leading-relaxed">Etkinlik katılımcılarına sponsorlu parça ve modifiye ödülleri.</p>
                 </div>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-8 bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 items-center">
+            <div class="grid lg:grid-cols-3 gap-8 p-6 md:p-8 rounded-3xl premium-card items-center">
                 <div class="lg:col-span-2" data-aos="fade-right">
-                    <span class="text-xs uppercase font-bold text-red-600 tracking-wide mb-1 block">VIP Premium Bekleme Deneyimi</span>
-                    <p class="text-slate-600 text-xs mb-4 leading-relaxed">Müşterilerimizin bekleme sürelerini keyifli bir sosyal deneyime dönüştürüyoruz. Çevredeki seçkin restoran ve kafelerle yaptığımız ortaklıklar sayesinde ayrıcalıklı bir servis sunuyoruz.</p>
-                    <div class="grid grid-cols-2 gap-3 text-[11px] text-slate-600">
-                        <div><b class="text-slate-900 block mb-0.5">Konforlu VIP Salonu</b> Atölye manzaralı dinlenme odası.</div>
-                        <div><b class="text-slate-900 block mb-0.5">İçecek İkram Barı</b> Ücretsiz sıcak/soğuk içecek servisi.</div>
-                        <div><b class="text-slate-900 block mb-0.5">Anlık Sipariş Sistemi</b> Restoran ortaklarımızdan adrese teslim yemek.</div>
-                        <div><b class="text-slate-900 block mb-0.5">Kişisel Asistan</b> Süreç boyunca müşteriyi bilgilendiren temsilci.</div>
+                    <span class="text-xs uppercase font-bold text-brand-red tracking-wider mb-1 block">VIP Müşteri Bekleme Alanı</span>
+                    <p class="text-slate-400 text-xs mb-4 leading-relaxed">Müşterilerimizin araçları işlem görürken zamanı en konforlu şekilde geçirmelerini sağlıyoruz. Çevredeki seçkin restoran ve kafelerle kurduğumuz entegrasyon sayesinde üst düzey ağırlama kalitesi.</p>
+                    <div class="grid grid-cols-2 gap-3 text-[11px] text-slate-400">
+                        <div><b class="text-white block mb-0.5">Premium Lounge</b> Atölye sahasını izleyen lüks dinlenme odası.</div>
+                        <div><b class="text-white block mb-0.5">İkram Barı</b> Sıcak ve soğuk içeceklerin ücretsiz servisi.</div>
+                        <div><b class="text-white block mb-0.5">Anlık Entegre Sipariş</b> Bölge restoranlarından adrese hızlı yemek teslimi.</div>
+                        <div><b class="text-white block mb-0.5">Özel Temsilci</b> Her aşamada müşteriyi dijital bilgilendiren asistan.</div>
                     </div>
                 </div>
-                <div class="lg:col-span-1 h-44 rounded-xl overflow-hidden border border-slate-100 relative group shadow-md cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/vip.jpg', 'Premium VIP Salonu')">
+                <div class="lg:col-span-1 h-44 rounded-xl overflow-hidden border border-brand-border relative group shadow-xl cursor-pointer" data-aos="fade-left" onclick="openLightbox('images/vip.jpg', 'Premium VIP Lounge Odası')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('images/vip.jpg');"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 max-w-7xl mx-auto">
+    <section class="py-28 px-6 max-w-7xl mx-auto">
         <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-            <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// STRATEJİK PLANLAMA</span>
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Kısa, Orta ve Uzun Vadeli Gelecek Planları</h2>
+            <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// İŞ PROJEKSİYONU</span>
+            <h2 class="text-3xl font-extrabold text-white mb-3">Kısa, Orta ve Uzun Vadeli Büyüme Hedefleri</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-6" data-aos="fade-up">
-            <div class="bg-white p-6 rounded-xl border border-slate-100 premium-shadow">
-                <div class="text-red-600 font-bold text-xs uppercase tracking-wider mb-3">Kısa Vadeli Planlar</div>
-                <ul class="space-y-2 text-xs text-slate-600 leading-relaxed">
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Mirror Park bölgesinde tam entegrasyon sağlayarak en çok tercih edilen servis olmak.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Haftalık sosyal car-meet etkinliklerini stabilize ederek marka sadakatini oturtmak.</li>
+            <div class="p-6 rounded-2xl premium-card">
+                <div class="text-brand-red font-bold text-xs uppercase tracking-widest mb-3">Kısa Vade (1 Yıl)</div>
+                <ul class="space-y-2 text-xs text-slate-400 leading-relaxed">
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Mirror Park bölgesinde tam koordinasyon sağlayarak pazar lideri olmak.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Haftalık sosyal car-meet sergilerini başlatarak topluluk sadakatini kurmak.</li>
                 </ul>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-100 premium-shadow">
-                <div class="text-slate-800 font-bold text-xs uppercase tracking-wider mb-3">Orta Vadeli Planlar</div>
-                <ul class="space-y-2 text-xs text-slate-600 leading-relaxed">
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Mobil acil servis filosu kurarak şehir genelinde yerinde mekanik destek sunmak.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Kurumsal lojistik filoları ile uzun vadeli periyodik bakım anlaşmaları imzalamak.</li>
+            <div class="p-6 rounded-2xl premium-card">
+                <div class="text-white font-bold text-xs uppercase tracking-widest mb-3">Orta Vade (3 Yıl)</div>
+                <ul class="space-y-2 text-xs text-slate-400 leading-relaxed">
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Mobil mekanik servis filosu kurarak tüm şehre yerinde acil tamir ulaştırmak.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Şehrin en büyük lojistik ve kargo filolarıyla uzun dönemli periyodik bakım kontratları bağlamak.</li>
                 </ul>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-slate-100 premium-shadow">
-                <div class="text-slate-800 font-bold text-xs uppercase tracking-wider mb-3">Uzun Vadeli Planlar</div>
-                <ul class="space-y-2 text-xs text-slate-600 leading-relaxed">
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Los Santos genelinde şubeleşme hamlesi başlatarak servis ağını büyütmek.</li>
-                    <li class="flex items-start"><i class="fa-solid fa-chevron-right text-red-500 mr-2 mt-0.5 shrink-0"></i> Profesyonel bir motor sporları takımı kurarak şehirdeki büyük yarışların ana sponsoru olmak.</li>
+            <div class="p-6 rounded-2xl premium-card">
+                <div class="text-white font-bold text-xs uppercase tracking-widest mb-3">Uzun Vade (5 Yıl)</div>
+                <ul class="space-y-2 text-xs text-slate-400 leading-relaxed">
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Los Santos genelinde şubeleşme hamlesi başlatarak servis istasyon sayısını artırmak.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-angle-right text-brand-red mr-2 mt-0.5 shrink-0"></i> Profesyonel bir motor sporları takımı kurarak büyük yarışların ana sponsoru olmak.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="galeri" class="py-24 px-6 bg-white border-t border-slate-100">
+    <section id="galeri" class="py-28 px-6 bg-[#0b111e] border-t border-brand-border">
         <div class="max-w-7xl mx-auto">
             <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-2">// ÇALIŞMALARIMIZ</span>
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-3">Proje Galerisi</h2>
-                <p class="text-slate-600 text-sm">Mirror Park tesislerimizde başarıyla teslim edilen seçkin projeler.</p>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-2">// PORTFOLYO</span>
+                <h2 class="text-3xl font-extrabold text-white mb-3">Tamamlanan Özel Projeler</h2>
+                <p class="text-slate-400 text-sm">Mirror Park tesislerimizde sıfır hata ile tamamlanıp teslim edilmiş seçkin araçlar.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
-                <div class="group relative rounded-xl overflow-hidden border border-slate-100 shadow-md h-80 bg-slate-100 cursor-pointer" onclick="openLightbox('images/gorsel-1.jpg', 'Özel Tasarım Mekanik Proje - 01')">
+                <div class="group relative rounded-2xl overflow-hidden border border-brand-border shadow-xl h-80 bg-brand-card cursor-pointer" onclick="openLightbox('images/gorsel-1.jpg', 'Özel Mekanik Revizyon Projesi - 01')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('images/gorsel-1.jpg');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div>
-                            <span class="text-xs font-bold text-red-500 mb-0.5 block"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Büyük Gör</span>
-                            <h4 class="text-white font-bold text-base">ÖZEL PROJE DETAYI #01</h4>
+                            <span class="text-[10px] font-bold text-brand-red mb-0.5 block uppercase tracking-wider"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Detaylı İncele</span>
+                            <h4 class="text-white font-bold text-base">Mekanik Güçlendirme & Atölye Kaydı #01</h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="group relative rounded-xl overflow-hidden border border-slate-100 shadow-md h-80 bg-slate-100 cursor-pointer" onclick="openLightbox('images/gorsel-2.jpg', 'Özel Tasarım Mekanik Proje - 02')">
+                <div class="group relative rounded-2xl overflow-hidden border border-brand-border shadow-xl h-80 bg-brand-card cursor-pointer" onclick="openLightbox('images/gorsel-2.jpg', 'Özel Tasarım ve Yazılım Projesi - 02')">
                     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style="background-image: url('images/gorsel-2.jpg');"></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div>
-                            <span class="text-xs font-bold text-red-500 mb-0.5 block"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Büyük Gör</span>
-                            <h4 class="text-white font-bold text-base">ÖZEL PROJE DETAYI #02</h4>
+                            <span class="text-[10px] font-bold text-brand-red mb-0.5 block uppercase tracking-wider"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Detaylı İncele</span>
+                            <h4 class="text-white font-bold text-base">Custom ECU Yazılım & Motor Revizyonu #02</h4>
                         </div>
                     </div>
                 </div>
@@ -433,79 +456,81 @@
         </div>
     </section>
 
-    <section id="randevu" class="bg-slate-50 py-24 px-6 border-t border-slate-100">
-        <div class="max-w-2xl mx-auto bg-white border border-slate-100 p-8 rounded-2xl premium-shadow" data-aos="zoom-in">
+    <section id="iletisim" class="py-28 px-6 bg-brand-dark relative">
+        <div class="max-w-2xl mx-auto bg-brand-card border border-brand-border p-8 md:p-10 rounded-3xl shadow-2xl relative z-10" data-aos="zoom-in">
             <div class="text-center mb-8">
-                <span class="text-red-600 font-bold tracking-wider uppercase text-xs block mb-1">// BAŞVURU VE İLETİŞİM</span>
-                <h3 class="text-2xl font-extrabold text-slate-900">Talep & İhale Ön Başvuru Formu</h3>
+                <span class="text-brand-red font-bold tracking-wider uppercase text-xs block mb-1">// KURUMSAL BAĞLANTI</span>
+                <h3 class="text-2xl font-extrabold text-white tracking-tight">Talep & İhale Ön Başvuru Formu</h3>
             </div>
-            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Başvurunuz başarıyla kurumsal güvenli veritabanına kaydedildi!');">
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Talebiniz başarıyla güvenli ana veritabanımıza işlendi!');">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Adınız / Kurum Adı</label>
-                        <input type="text" placeholder="Örn. Henrique" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-red-600 focus:bg-white transition-all text-slate-900" required>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Adınız / Kurum İsmi</label>
+                        <input type="text" placeholder="Örn. Henrique" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-red transition-all text-white" required>
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">E-Posta Adresi</label>
-                        <input type="email" placeholder="iletisim@lsautoshop.com" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-red-600 focus:bg-white transition-all text-slate-900" required>
+                        <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">E-Posta Adresi</label>
+                        <input type="email" placeholder="iletisim@lsautoshop.com" class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-red transition-all text-white" required>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Başvuru / Talep Türü</label>
-                    <select class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-red-600 focus:bg-white transition-all text-slate-700">
-                        <option>Bireysel Modifiye / Onarım Talebi</option>
-                        <option>Kurumsal Filo Bakım Anlaşması</option>
-                        <option>Kariyer / Ustabaşı Başvurusu</option>
-                        <option>İhale ve Ortaklık Detayları Hakkında</option>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Başvuru / Anlaşma Türü</label>
+                    <select class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-red transition-all text-slate-300">
+                        <option>Bireysel Özel Modifiye / Onarım Talebi</option>
+                        <option>Kurumsal Filo Periyodik Bakım Sözleşmesi</option>
+                        <option>Kariyer / Usta ve Personel Başvurusu</option>
+                        <option>Ortaklık ve İhale Detay Görüşmesi</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wide mb-2">Mesajınız / Detaylar</label>
-                    <textarea rows="4" placeholder="Mesajınızı veya ihale detay talebinizi buraya yazabilirsiniz..." class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-red-600 focus:bg-white transition-all text-white" required></textarea>
+                    <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Mesajınız / Detaylar</label>
+                    <textarea rows="4" placeholder="Talebinizi veya ihale şartlarınızı detaylıca buraya ekleyebilirsiniz..." class="w-full bg-brand-dark border border-brand-border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-red transition-all text-white" required></textarea>
                 </div>
-                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-lg text-xs uppercase tracking-widest transition-all shadow-md shadow-red-600/10">Formu Gönder</button>
+                <button type="submit" class="w-full bg-brand-red hover:bg-brand-redHover text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-all shadow-lg shadow-brand-red/10">Formu Güvenli Olarak İlet</button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-slate-950 text-slate-400 py-12 px-6 border-t border-slate-900">
+    <footer class="bg-[#05070f] text-slate-500 py-12 px-6 border-t border-brand-border">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <h4 class="text-base font-extrabold text-white tracking-tight">LS <span class="text-red-500">AUTOSHOP</span></h4>
-                <p class="text-slate-500 text-xs mt-1">Mirror Park Mekanik Tesis Yönetimi &copy; 2026</p>
+                <h4 class="text-base font-black text-white tracking-tight">LS <span class="text-brand-red">AUTOSHOP</span></h4>
+                <p class="text-slate-600 text-xs mt-1">Mirror Park Mekanik Tesis Yönetimi &copy; 2026</p>
             </div>
-            <div class="flex flex-wrap gap-6 text-xs text-slate-400">
-                <span><i class="fa-solid fa-location-dot text-red-500 mr-1"></i> Mirror Park, Los Santos</span>
-                <span><i class="fa-solid fa-envelope text-red-500 mr-1"></i> info@lsautoshop.com</span>
+            <div class="flex flex-wrap gap-6 text-xs text-slate-500">
+                <span><i class="fa-solid fa-location-dot text-brand-red mr-1"></i> Mirror Park, Los Santos</span>
+                <span><i class="fa-solid fa-envelope text-brand-red mr-1"></i> info@lsautoshop.com</span>
             </div>
         </div>
     </footer>
 
-    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-white text-3xl hover:text-red-500 transition-colors" onclick="closeLightbox()">&times;</button>
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-brand-dark/95 flex items-center justify-center p-4 transition-all duration-300" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white text-3xl hover:text-brand-red transition-colors" onclick="closeLightbox()">&times;</button>
         <div class="max-w-4xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
-            <img id="lightboxImg" src="" alt="" class="max-h-[80vh] rounded-xl border border-slate-800 shadow-2xl object-contain">
-            <p id="lightboxCaption" class="text-xs text-slate-400 uppercase tracking-widest mt-4 text-center font-semibold"></p>
+            <img id="lightboxImg" src="" alt="" class="max-h-[80vh] rounded-2xl border border-brand-border shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-xs text-slate-400 uppercase tracking-widest mt-4 text-center font-bold"></p>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Animasyon kütüphanesini tetikle
         AOS.init({ once: true, duration: 800 });
 
-        const statsSection = document.getElementById('istatistik');
+        // Canlı Dijital Sayaç Fonksiyonu
+        const statsSection = document.getElementById('vizyon'); // Üst bölüme gelince başlasın
         const counters = document.querySelectorAll('.stats-count');
         let countStarted = false;
 
         function startCounters() {
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
-                const speed = target / 50;
+                const speed = target / 40;
                 const updateCount = () => {
                     const current = +counter.innerText;
                     if (current < target) {
                         counter.innerText = Math.ceil(current + speed);
-                        setTimeout(updateCount, 25);
+                        setTimeout(updateCount, 30);
                     } else {
                         counter.innerText = target;
                     }
@@ -518,12 +543,13 @@
             if (!statsSection) return;
             const pos = statsSection.getBoundingClientRect().top;
             const screenHeight = window.innerHeight;
-            if (pos < screenHeight - 100 && !countStarted) {
+            if (pos < screenHeight && !countStarted) {
                 countStarted = true;
                 startCounters();
             }
         });
 
+        // Işık Kutusu (Lightbox) Yönetimi
         function openLightbox(src, title) {
             const modal = document.getElementById('lightboxModal');
             const img = document.getElementById('lightboxImg');
