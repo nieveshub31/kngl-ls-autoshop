@@ -14,12 +14,17 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #fff; overflow-x: hidden; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
 
-        /* Mouse Takip Efekti */
-        .mouse-glow {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,0,0,0.05) 0%, transparent 50%);
-            pointer-events: none; z-index: 999;
-        }
+        /* Mouse Takip Efekti (Işığı Azaltılmış Yeni Hali) */
+.mouse-glow {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 0, 0, 0.02) 0%, transparent 30%);
+    pointer-events: none; 
+    z-index: 999;
+}
 
         /* Perspective Hover Efekti */
         .premium-card {
@@ -260,7 +265,7 @@
 
     <section id="kadro" class="py-32 px-6 max-w-7xl mx-auto">
         <div class="text-center mb-20" data-aos="fade-up">
-            <h2 class="heading-font text-4xl font-bold tracking-tight mb-4 uppercase">Kadro / <span class="text-red-600 italic">Hiyerarş</span></h2>
+            <h2 class="heading-font text-4xl font-bold tracking-tight mb-4 uppercase">Kadro / <span class="text-red-600 italic">Hiyerarşi</span></h2>
             <p class="text-gray-500 text-[10px] uppercase tracking-widest">Aile Herşeydir</p>
             <div class="w-12 h-1 bg-red-600 mx-auto mt-4"></div>
         </div>
