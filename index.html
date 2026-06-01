@@ -416,7 +416,7 @@
         </div>
     </section>
     
- <!-- MÜŞTERİ YORUMLARI SEKMESİ (TAM GERÇEK SONSUZ DÖNGÜ & GELİŞMİŞ MODAL) -->
+<!-- MÜŞTERİ YORUMLARI SEKMESİ (GARANTİLİ SONSUZ AKIŞ VE DURMAYAN HOVER SÜRÜMÜ) -->
     <section id="yorumlar" class="py-20 bg-black/40 relative overflow-hidden border-t border-b border-white/5">
         <div class="text-center mb-12" data-aos="fade-up">
             <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">FEEDBACK</span>
@@ -424,9 +424,9 @@
             <div class="w-8 h-0.5 bg-red-600 mx-auto mt-3"></div>
         </div>
 
-        <!-- Kayma Alanı Ana Kapsayıcı -->
-        <div class="marquee-wrapper relative w-full overflow-hidden flex select-none" id="marqueeWrapper">
-            <!-- JS, tam sonsuz döngü yapısını buraya pürüzsüzce inşa edecek -->
+        <!-- Kayma Alanı Ana Kapsayıcı (Sola kaymayı zorunlu kılan overflow-hidden alan) -->
+        <div class="relative w-full overflow-hidden flex select-none" id="marqueeWrapper">
+            <!-- JS, sıçramasız sonsuz döngüyü buraya enjekte edecek -->
         </div>
     </section>
 
@@ -450,30 +450,26 @@
         </div>
     </div>
 
-    <!-- TÜM SİSTEMİ YÖNETEN AKILLI SCRIPT VE CSS -->
+    <!-- HİÇBİR YERDE DURMAYAN VE SAPMANI ÖNLEYEN GÖMÜLÜ CSS -->
     <style>
-        .marquee-wrapper {
-            width: 100%;
-            overflow: hidden;
-        }
-        
-        /* Gerçek sonsuz döngüyü sağlayan ana gövde */
-        .marquee-content {
+        /* Ana şeridin genişlik esnemesini sabitleyen taşıyıcı */
+        .custom-marquee-content {
             display: flex;
             width: max-content;
-            animation: sonsuzKaydirSola 25s linear infinite;
+            gap: 1rem;
+            animation: kesintisizSolaAkis 30s linear infinite;
         }
 
-        .marquee-track {
+        /* Üstüne gelince durma (hover:paused) kurallarının HEPSİ TAMAMEN KALDIRILDI! */
+        /* Sadece modal açıkken animasyon dondurulur, o kadar. */
+        body.modal-open .custom-marquee-content {
+            animation-play-state: paused;
+        }
+
+        .custom-marquee-track {
             display: flex;
             gap: 1rem;
-            padding-right: 1rem; /* İki grup arasındaki milimetrik boşluğu eşitler */
-        }
-
-        /* Mouse üzerine gelince veya modal açıkken kaymayı durdurur */
-        .marquee-wrapper:hover .marquee-content,
-        body.modal-open .marquee-content {
-            animation-play-state: paused;
+            flex-shrink: 0;
         }
 
         .marquee-card {
@@ -485,22 +481,18 @@
         .marquee-card:hover {
             border-color: rgba(220, 38, 38, 0.4);
             box-shadow: 0 0 15px rgba(220, 38, 38, 0.1);
-            transform: translateY(-2px);
         }
 
-        .marquee-card p {
-            color: #e5e5e5 !important;
-        }
-
-        /* Tam ikiye bölünmüş klon sisteminde sıçramasız geçiş animasyonu */
-        @keyframes sonsuzKaydirSola {
+        /* %50 değerine ulaştığında klon parça tam üstüne biner ve sıfır boşlukla döner */
+        @keyframes kesintisizSolaAkis {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } 
+            100% { transform: translateX(-50%); }
         }
     </style>
 
+    <!-- SIFIR HATA İLE KARTLARI KLONLAYAN AKILLI SCRIPT -->
     <script>
-        // Yorum Verileri
+        // Yorum Verilerin
         const yorumlarVerisi = [
             { name: "Anıl Yılmaz", vehicle: "Opel Corsa D", text: "Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik.", stars: 5 },
             { name: "Berkcan K.", vehicle: "Nissan Silvia S14", text: "Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam.", stars: 5 },
@@ -510,20 +502,20 @@
 
         const wrapper = document.getElementById('marqueeWrapper');
 
-        // Gerçek sonsuz döngü için 2 bağımsız track setini tek bir content içinde birleştiren fonksiyon
         function createMarquee() {
-            let htmlStructure = '<div class="marquee-content">';
+            // İki grubu sarmalayan tek bir ana gövde açıyoruz
+            let htmlStructure = '<div class="custom-marquee-content">';
             
-            // 2 adet yan yana track oluşturarak sıçramayı önlüyoruz
+            // Tam döngü kuralı için listeyi yan yana 2 kez klonlayarak yazdırıyoruz
             for (let i = 0; i < 2; i++) {
-                htmlStructure += '<div class="marquee-track">';
+                htmlStructure += '<div class="custom-marquee-track">';
                 yorumlarVerisi.forEach((item) => {
                     htmlStructure += `
                         <div class="marquee-card w-[340px] shrink-0 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('${item.name}', '${item.vehicle}', \`${item.text}\`, ${item.stars})">
                             <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                                 ${'<i class="fa-solid fa-star"></i>'.repeat(item.stars)}
                             </div>
-                            <p class="text-gray-400 text-xs font-light leading-relaxed mb-4 pointer-events-none">"${item.text}"</p>
+                            <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"${item.text}"</p>
                             <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
                                 <span class="text-white font-bold text-xs uppercase tracking-wider">${item.name}</span>
                                 <span class="text-gray-600 text-[10px] uppercase">${item.vehicle}</span>
@@ -531,14 +523,14 @@
                         </div>
                     `;
                 });
-                htmlStructure += '</div>';
+                htmlStructure += '</div>'; // track bitişi
             }
             
-            htmlStructure += '</div>';
+            htmlStructure += '</div>'; // content bitişi
             wrapper.innerHTML = htmlStructure;
         }
 
-        // Pencereyi Açma
+        // Pop-up Açma
         function openCommentModal(name, vehicle, text, stars) {
             const modal = document.getElementById('commentModal');
             document.body.classList.add('modal-open');
@@ -557,7 +549,7 @@
             }, 10);
         }
 
-        // Pencereyi Kapatma
+        // Pop-up Kapatma
         function closeCommentModal() {
             const modal = document.getElementById('commentModal');
             document.body.classList.remove('modal-open');
@@ -572,23 +564,23 @@
             }, 300);
         }
 
-        // DIŞARIYA BASTIĞINDA KAPATMA MEKANİZMASI
+        // Dış Boşluğa Basınca Kapatma Sihirbazı
         document.getElementById('commentModal').addEventListener('click', function(e) {
             const card = document.getElementById('modalCard');
-            // Eğer tıklanan yer kartın kendisi veya kartın içindeki bir eleman DEĞİLSE kapat
             if (!card.contains(e.target)) {
                 closeCommentModal();
             }
         });
 
-        // ESC tuşuna basınca kapatma
+        // ESC ile Kapatma Konforu
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeCommentModal();
         });
 
-        // Başlat
+        // Çalıştır
         createMarquee();
     </script>
+
     
     </section>
 
