@@ -10,36 +10,28 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-/* --- SONSUZ MARQUEE (KAYAN YORUMLAR) ANIMASYONU --- */
+/* --- GÜNCELLENMİŞ SONSUZ MARQUEE (KAYAN YORUMLAR) CSS --- */
 .marquee-container {
     display: flex;
-    gap: 1.5rem; /* Kartlar arasındaki boşluk */
+    gap: 0.75rem !important; /* Kartların arasındaki boşluk daraltıldı (12px) */
 }
 
 .marquee-content {
     display: flex;
     justify-content: space-around;
-    gap: 1.5rem;
-    animation: kaydirSola 30s linear infinite; /* 30s hızı ayarlar, büyüterek yavaşlatabilirsin */
+    gap: 0.75rem !important; /* Kartların arasındaki boşluk daraltıldı (12px) */
+    animation: kaydirSola 30s linear infinite;
 }
 
-/* Mouse ile kartın üzerine gelindiğinde kaymayı yavaşça durdurur */
-.marquee-container:hover .marquee-content {
-    animation-play-state: paused;
-}
+/* Üstüne gelince durma kodu kaldırıldı! Akış kesintisiz devam eder. */
 
-@keyframes kaydirSola {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+/* Tıklayınca (active durumunda) kartın hafifçe büyümesi ve parlaması efekti */
+.marquee-content > div:active {
+    transform: scale(1.05);
+    border-color: rgba(220, 38, 38, 0.6) !important; /* Kırmızı neon sınır belirginleşir */
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
+    z-index: 50;
 }
-        
-        :root { --accent: #ff0000; --bg: #050505; --card: #0c0c0c; --border: #1a1a1a; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #fff; overflow-x: hidden; }
-        .heading-font { font-family: 'Space Grotesk', sans-serif; }
 
         /* Mouse Takip Efekti (Işığı Azaltılmış Yeni Hali) */
 .mouse-glow {
