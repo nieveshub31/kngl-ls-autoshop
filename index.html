@@ -581,6 +581,168 @@
         // Sistemi Başlat
         createMarquee();
     </script>
+<section id="showroom" class="py-20 bg-black/60 relative overflow-hidden border-b border-white/5">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">LOS SANTOS TUNERS</span>
+            <h3 class="heading-font text-2xl font-bold text-white uppercase tracking-tight">LS <span class="text-red-600 italic">Showroom</span></h3>
+            <p class="text-gray-500 text-xs mt-2 font-light tracking-wide uppercase">Proje araçlarımızı seçin, uygulanan siber geliştirmeleri inceleyin</p>
+            <div class="w-8 h-0.5 bg-red-600 mx-auto mt-4"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md-grid-cols-3 gap-8 mb-12">
+                
+                <div class="showroom-card bg-neutral-900/40 border border-white/5 rounded-[2rem] p-6 cursor-pointer relative overflow-hidden transition-all duration-300" onclick="selectShowroomVehicle('asbo', this)">
+                    <div class="absolute top-4 right-6 text-[10px] font-bold text-red-600 tracking-widest uppercase">Compact Tuner</div>
+                    <h4 class="text-white font-bold text-lg uppercase tracking-tight heading-font mb-1">Maxwell Asbo</h4>
+                    <span class="text-gray-500 text-xs uppercase tracking-wider font-light">Platform: Opel Corsa D</span>
+                    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-red-600/30 to-transparent my-6"></div>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400 group-hover:text-white transition">İncele <i class="fa-solid fa-arrow-right text-red-600 ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+                <div class="showroom-card bg-neutral-900/40 border border-white/5 rounded-[2rem] p-6 cursor-pointer relative overflow-hidden transition-all duration-300 active-vehicle" onclick="selectShowroomVehicle('remus', this)">
+                    <div class="absolute top-4 right-6 text-[10px] font-bold text-red-600 tracking-widest uppercase">Drift King</div>
+                    <h4 class="text-white font-bold text-lg uppercase tracking-tight heading-font mb-1">Annis Remus</h4>
+                    <span class="text-gray-500 text-xs uppercase tracking-wider font-light">Platform: Nissan Silvia S14</span>
+                    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-red-600/30 to-transparent my-6"></div>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400">İncele <i class="fa-solid fa-arrow-right text-red-600 ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+                <div class="showroom-card bg-neutral-900/40 border border-white/5 rounded-[2rem] p-6 cursor-pointer relative overflow-hidden transition-all duration-300" onclick="selectShowroomVehicle('asea', this)">
+                    <div class="absolute top-4 right-6 text-[10px] font-bold text-red-600 tracking-widest uppercase">Street Custom</div>
+                    <h4 class="text-white font-bold text-lg uppercase tracking-tight heading-font mb-1">Declasse Asea</h4>
+                    <span class="text-gray-500 text-xs uppercase tracking-wider font-light">Platform: Hyundai Accent Blue</span>
+                    <div class="w-full h-[2px] bg-gradient-to-r from-transparent via-red-600/30 to-transparent my-6"></div>
+                    <div class="text-right">
+                        <span class="text-xs text-gray-400">İncele <i class="fa-solid fa-arrow-right text-red-600 ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="showroomDetails" class="bg-neutral-950/80 border border-red-600/30 rounded-[2.5rem] p-8 md:p-12 shadow-[0_0_50px_rgba(220,38,38,0.05)] transition-all duration-500 transform opacity-100 scale-100">
+                </div>
+        </div>
+    </section>
+
+    <style>
+        .showroom-card {
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+        }
+        /* Fare üstüne geldiğinde siber neon kırmızı çizgi parlaması */
+        .showroom-card:hover {
+            border-color: rgba(220, 38, 38, 0.5);
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.15);
+            transform: translateY(-3px);
+        }
+        /* Aktif seçili olan aracın siber hatları */
+        .active-vehicle {
+            border-color: #dc2626 !important;
+            background-color: rgba(220, 38, 38, 0.03) !important;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2) !important;
+        }
+        .spec-item {
+            background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+        }
+    </style>
+
+    <script>
+        // Los Santos Garaj Verileri
+        const showroomData = {
+            asbo: {
+                title: "Maxwell Asbo",
+                platform: "Opel Corsa D Setup",
+                desc: "Şehir içi atikliği ve yüksek devir performansı için optimize edilmiş sokak kurulumu. Kronikleşen tüm mekanik zayıflıklar giderilerek dayanıklılık odaklı güç artışı sağlandı.",
+                specs: [
+                    { label: "Mekanik Sorun Giderme", val: "DPF & EGR İptali / Sıfır Duman Garantisi" },
+                    { label: "Güç Seviyesi", val: "Stage 1 Performans Yazılımı (+35 HP)" },
+                    { label: "Egzoz Kurulumu", val: "Downpipe & Custom Ara Borular" },
+                    { label: "Diagnostik", val: "Gelişmiş Beyin ve Arıza Teşhisi" }
+                ]
+            },
+            remus: {
+                title: "Annis Remus",
+                platform: "Nissan Silvia S14 Custom Build",
+                desc: "Safkan drift ve performans projesi. Şasi burulma dirençlerinden custom egzoz manifold imalatına kadar her detay Los Santos standartlarında el işçiliğiyle baştan yaratıldı.",
+                specs: [
+                    { label: "Motor & Güç", val: "Stage 2 Setup & Custom Map (+75 HP)" },
+                    { label: "Custom İmalat", val: "Paslanmaz Krom Egzoz Hattı & Manifold" },
+                    { label: "Şasi Güçlendirme", val: "Kule Gergileri & Custom Şasi Kaynak İşçiliği" },
+                    { label: "Ayar / Kalibrasyon", val: "Dyno Üzerinde Şeffaf Güç Testi & İnce Ayar" }
+                ]
+            },
+            asea: {
+                title: "Declasse Asea",
+                platform: "Hyundai Accent Blue Urban Edition",
+                desc: "Günlük sürüş konforunu bozmadan araca siber ve agresif bir karakter kazandırma projesi. Hem iç ambiyans hem de mekanik kararlılık üst seviyeye taşındı.",
+                specs: [
+                    { label: "İç Aydınlatma", val: "Custom Akıllı Telefon Kontrollü Ambiyans" },
+                    { label: "Siber Tasarım", val: "Dış Cephe Siber Işık Hatları & LED Dönüşümü" },
+                    { label: "Yazılım Optimizasyonu", val: "Eco-Sport Hibrit Yazılım Kurulumu" },
+                    { label: "Mekanik Bakım", val: "Ağır Mekanik Revizyon & Kusursuz Periyodik Bakım" }
+                ]
+            }
+        };
+
+        // Seçim Değiştirme Fonksiyonu
+        function selectShowroomVehicle(key, element) {
+            // Aktif sınıfını diğer kartlardan temizle
+            document.querySelectorAll('.showroom-card').forEach(card => {
+                card.classList.remove('active-vehicle');
+            });
+            
+            // Tıklanan karta aktiflik ver
+            if(element) element.classList.add('active-vehicle');
+
+            const panel = document.getElementById('showroomDetails');
+            const data = showroomData[key];
+
+            // Geçiş efekti (Hafifçe küçülüp kaybolup geri gelme)
+            panel.classList.add('opacity-0', 'scale-95');
+
+            setTimeout(() => {
+                // Özellik listesini HTML olarak hazırlama
+                let specsHTML = '';
+                data.specs.forEach(spec => {
+                    specsHTML += `
+                        <div class="spec-item border border-white/5 rounded-2xl p-4 flex flex-col justify-between">
+                            <span class="text-red-600 text-[10px] font-bold tracking-widest uppercase mb-1">${spec.label}</span>
+                            <span class="text-white font-medium text-xs md:text-sm">${spec.val}</span>
+                        </div>
+                    `;
+                });
+
+                // Panel İçeriğini Güncelleme
+                panel.innerHTML = `
+                    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                        <div class="lg:col-span-2">
+                            <span class="text-red-600 text-[10px] font-bold uppercase tracking-widest block mb-1">PROJE DETAYLARI</span>
+                            <h4 class="heading-font text-2xl font-bold text-white uppercase tracking-tight mb-2">${data.title}</h4>
+                            <span class="inline-block bg-white/5 border border-white/10 text-gray-400 text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full mb-4">${data.platform}</span>
+                            <p class="text-gray-400 text-xs font-light leading-relaxed mb-0">${data.desc}</p>
+                        </div>
+                        <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            ${specsHTML}
+                        </div>
+                    </div>
+                `;
+
+                // Görünürlüğü geri açma
+                panel.classList.remove('opacity-0', 'scale-95');
+                panel.classList.add('opacity-100', 'scale-100');
+            }, 300);
+        }
+
+        // Sayfa ilk yüklendiğinde varsayılan olarak Annis Remus'u seçili getir
+        document.addEventListener("DOMContentLoaded", function() {
+            selectShowroomVehicle('remus', document.querySelector('.active-vehicle'));
+        });
+    </script>
+
     
     </section>
 
