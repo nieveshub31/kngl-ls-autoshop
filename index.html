@@ -745,109 +745,174 @@
         });
     </script>
 
-   <!-- LS UNDERGROUND KARABORSA PARÇA SEKMESİ -->
-    <section id="blackmarket" class="py-20 bg-black/80 relative overflow-hidden border-b border-white/5">
-        <!-- Arka Plan Siber Grafik Efekti -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(220,38,38,0.05),transparent_50%)]"></div>
-
-        <div class="text-center mb-16" data-aos="fade-up">
-            <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">RESTRICTED AREA</span>
-            <h3 class="heading-font text-2xl font-bold text-white uppercase tracking-tight">LS <span class="text-red-600 italic">Underground</span></h3>
-            <p class="text-gray-500 text-xs mt-2 font-light tracking-wide uppercase">Tezgah altı özel üretim parçalar ve siber modifikasyon kitleri</p>
-            <div class="w-8 h-0.5 bg-red-600 mx-auto mt-4"></div>
+  <!-- LS UNDERGROUND SİBER ERİŞİM SİMGESİ VE TERMİNALİ -->
+    <section class="py-12 bg-black/50 text-center relative overflow-hidden border-b border-white/5">
+        <!-- Erişim Butonu Alanı -->
+        <div class="max-w-md mx-auto px-4" data-aos="fade-up">
+            <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-3">RESTRICTED DATASTREAM</p>
+            
+            <!-- Tıklanınca Pencereyi Açan Siber Buton -->
+            <button onclick="openBlackMarket()" class="group relative inline-flex items-center space-x-3 bg-neutral-950/80 border border-red-600/30 hover:border-red-600/80 rounded-2xl px-6 py-4 transition-all duration-300 shadow-[0_0_15px_rgba(220,38,38,0.05)] hover:shadow-[0_0_25px_rgba(220,38,38,0.2)]">
+                <span class="flex h-3 w-3 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                </span>
+                <i class="fa-solid fa-terminal text-red-500 text-sm group-hover:scale-110 transition-transform"></i>
+                <span class="text-white font-bold text-xs uppercase tracking-widest heading-font">LS Underground Veritabanı</span>
+            </button>
+            
+            <p class="text-gray-600 text-[9px] uppercase tracking-wide mt-3">Tezgah altı özel sevkiyat listesi için terminali başlatın</p>
         </div>
+    </section>
 
-        <div class="max-w-6xl mx-auto px-4 relative z-10">
+    <!-- GİZLİ KARABORSA PENCERESİ (MODAL) -->
+    <div id="blackMarketModal" class="fixed inset-0 z-[99999] hidden flex items-center justify-center p-4 backdrop-blur-md bg-black/90 opacity-0 transition-opacity duration-300">
+        <!-- İç Panel Kartı -->
+        <div id="bmModalCard" class="bg-neutral-950 border border-red-600/40 w-full max-w-5xl rounded-[2.5rem] p-6 md:p-10 relative shadow-[0_0_60px_rgba(220,38,38,0.15)] transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto">
+            
+            <!-- Kapatma Butonu -->
+            <button onclick="closeBlackMarket()" class="absolute top-6 right-6 text-gray-500 hover:text-red-500 transition text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Başlık -->
+            <div class="text-center mb-10">
+                <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">CONNECTED TO DEEP NET</span>
+                <h3 class="heading-font text-xl md:text-2xl font-bold text-white uppercase tracking-tight">Tezgah Altı <span class="text-red-600 italic">Özel Sevkiyat</span></h3>
+                <div class="w-8 h-0.5 bg-red-600 mx-auto mt-3"></div>
+            </div>
+
             <!-- Karaborsa Ürün Kartları Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- Ürün 1 -->
-                <div class="bm-card bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative flex flex-col justify-between overflow-hidden transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-red-600/10 text-red-500 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-xl border-l border-b border-red-600/20">
-                        STAGE 3
-                    </div>
+                <div class="bm-popup-card bg-neutral-900/50 border border-white/5 rounded-3xl p-5 relative flex flex-col justify-between overflow-hidden">
                     <div>
-                        <div class="text-red-600 text-xl mb-4"><i class="fa-solid fa-gauge-high"></i></div>
-                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2 heading-font">Hao's Custom Turbo Kit</h4>
-                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Annis Remus ve spor serisi için limitleri zorlayan, custom manifold bağlantılı özel karaborsa aşırı besleme kiti.</p>
+                        <div class="text-red-600 text-lg mb-3"><i class="fa-solid fa-gauge-high"></i></div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2 heading-font">Hao's Custom Turbo Kit</h4>
+                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Annis Remus ve spor serisi için limitleri zorlayan, custom manifold bağlantılı özel aşırı besleme kiti.</p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-gray-600 text-[9px] font-bold uppercase tracking-wider">TEMİN DURUMU</span>
-                        <span class="text-red-500 font-bold text-[10px] uppercase tracking-widest animate-pulse">SADECE BAŞ USTA'DAN</span>
+                    <div class="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-gray-600 text-[8px] font-bold uppercase tracking-wider">TEMİN</span>
+                        <span class="text-red-500 font-bold text-[9px] uppercase tracking-widest animate-pulse">BAŞ USTA'DAN</span>
                     </div>
                 </div>
 
                 <!-- Ürün 2 -->
-                <div class="bm-card bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative flex flex-col justify-between overflow-hidden transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-red-600/10 text-red-500 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-xl border-l border-b border-red-600/20">
-                        ILLEGAL
-                    </div>
+                <div class="bm-popup-card bg-neutral-900/50 border border-white/5 rounded-3xl p-5 relative flex flex-col justify-between overflow-hidden">
                     <div>
-                        <div class="text-red-600 text-xl mb-4"><i class="fa-solid fa-satellite-dish"></i></div>
-                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2 heading-font">LSPD Signal Jammer</h4>
-                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Los Santos sokaklarında radarlara ve polis sinyallerine yakalanmamak için araç içi elektrik hattına gizlenen siber frekans karıştırıcı.</p>
+                        <div class="text-red-600 text-lg mb-3"><i class="fa-solid fa-satellite-dish"></i></div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2 heading-font">LSPD Signal Jammer</h4>
+                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Los Santos sokaklarında radarlara ve polis sinyallerine yakalanmamak için araç içine gizlenen frekans karıştırıcı.</p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-gray-600 text-[9px] font-bold uppercase tracking-wider">TEMİN DURUMU</span>
-                        <span class="text-red-500 font-bold text-[10px] uppercase tracking-widest">GARAJDA YÜZ YÜZE</span>
+                    <div class="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-gray-600 text-[8px] font-bold uppercase tracking-wider">TEMİN</span>
+                        <span class="text-red-500 font-bold text-[9px] uppercase tracking-widest">GARAJDA YÜZ YÜZE</span>
                     </div>
                 </div>
 
                 <!-- Ürün 3 -->
-                <div class="bm-card bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative flex flex-col justify-between overflow-hidden transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-red-600/10 text-red-500 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-xl border-l border-b border-red-600/20">
-                        CUSTOM EXHAUST
-                    </div>
+                <div class="bm-popup-card bg-neutral-900/50 border border-white/5 rounded-3xl p-5 relative flex flex-col justify-between overflow-hidden">
                     <div>
-                        <div class="text-red-600 text-xl mb-4"><i class="fa-solid fa-wind"></i></div>
-                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2 heading-font">Warex Valve-Kit V2</h4>
-                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Uzaktan kumandalı, mahalle aralarında LSPD uyarısını tetiklemeyecek sessiz moda geçen, açıkken ise caddeleri inleten el yapımı valf sistemi.</p>
+                        <div class="text-red-600 text-lg mb-3"><i class="fa-solid fa-wind"></i></div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2 heading-font">Warex Valve-Kit V2</h4>
+                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Uzaktan kumandalı, mahalle aralarında LSPD uyarısını tetiklemeyecek sessiz moda geçen el yapımı valf sistemi.</p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-gray-600 text-[9px] font-bold uppercase tracking-wider">TEMİN DURUMU</span>
-                        <span class="text-red-500 font-bold text-[10px] uppercase tracking-widest animate-pulse">SADECE BAŞ USTA'DAN</span>
+                    <div class="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-gray-600 text-[8px] font-bold uppercase tracking-wider">TEMİN</span>
+                        <span class="text-red-500 font-bold text-[9px] uppercase tracking-widest animate-pulse">BAŞ USTA'DAN</span>
                     </div>
                 </div>
 
                 <!-- Ürün 4 -->
-                <div class="bm-card bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative flex flex-col justify-between overflow-hidden transition-all duration-300">
-                    <div class="absolute top-0 right-0 bg-red-600/10 text-red-500 text-[8px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-xl border-l border-b border-red-600/20">
-                        TUNER SPECIAL
-                    </div>
+                <div class="bm-popup-card bg-neutral-900/50 border border-white/5 rounded-3xl p-5 relative flex flex-col justify-between overflow-hidden">
                     <div>
-                        <div class="text-red-600 text-xl mb-4"><i class="fa-solid fa-microchip"></i></div>
-                        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2 heading-font">Siber Beyin Map Modülü</h4>
-                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Maxwell Asbo ve Declasse Asea modellerinde yakıt enjeksiyonunu ve hava akışını siber yazılımla milisaniyelik optimize eden gizli tak-çalıştır modül.</p>
+                        <div class="text-red-600 text-lg mb-3"><i class="fa-solid fa-microchip"></i></div>
+                        <h4 class="text-white font-bold text-xs uppercase tracking-wider mb-2 heading-font">Siber Beyin Modülü</h4>
+                        <p class="text-gray-400 text-[11px] font-light leading-relaxed">Maxwell Asbo ve Declasse Asea modellerinde yakıt enjeksiyonunu siber yazılımla milisaniyelik optimize eden modül.</p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span class="text-gray-600 text-[9px] font-bold uppercase tracking-wider">TEMİN DURUMU</span>
-                        <span class="text-red-500 font-bold text-[10px] uppercase tracking-widest">GARAJDA YÜZ YÜZE</span>
+                    <div class="mt-6 pt-3 border-t border-white/5 flex items-center justify-between">
+                        <span class="text-gray-600 text-[8px] font-bold uppercase tracking-wider">TEMİN</span>
+                        <span class="text-red-500 font-bold text-[9px] uppercase tracking-widest">GARAJDA YÜZ YÜZE</span>
                     </div>
                 </div>
 
             </div>
-            
-            <!-- Bilgi Notu Alt Bant -->
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <p class="text-[10px] text-gray-500 uppercase tracking-widest"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-2"></i> Yukarıdaki parçaların satışı internet üzerinden kesinlikle yapılmamaktadır. Detaylar için dükkana uğrayın.</p>
+
+            <!-- Alt Bilgi Notu -->
+            <div class="mt-8 text-center border-t border-white/5 pt-4">
+                <p class="text-[9px] text-gray-600 uppercase tracking-widest"><i class="fa-solid fa-triangle-exclamation text-red-600 mr-1"></i> Bu parçaların satışı web üzerinden yapılmaz. Detaylar ve fiyatlar için garajda yüz yüze görüşülür.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- LS UNDERGROUND STYLE ÖZELLİKLERİ -->
+    <!-- PENCERE STYLES -->
     <style>
-        .bm-card {
-            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+        .bm-popup-card {
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
         }
-        /* Üzerine gelindiğinde siber tehlike / illegal kırmızı sınır parlaması */
-        .bm-card:hover {
-            border-color: rgba(220, 38, 38, 0.4);
-            box-shadow: 0 0 30px rgba(220, 38, 38, 0.1), inset 0 0 20px rgba(220, 38, 38, 0.02);
-            transform: translateY(-2px);
-            background-color: rgba(10, 10, 10, 0.8);
+        .bm-popup-card:hover {
+            border-color: rgba(220, 38, 38, 0.3);
+            background-color: rgba(20, 20, 20, 0.8);
+        }
+        /* Custom Scrollbar Pencere İçi İçin */
+        #bmModalCard::-webkit-scrollbar {
+            width: 4px;
+        }
+        #bmModalCard::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+        #bmModalCard::-webkit-scrollbar-thumb {
+            background: rgba(220, 38, 38, 0.3);
+            border-radius: 10px;
         }
     </style>
 
+    <!-- PENCERE MOTORU SCRIPT'I -->
+    <script>
+        function openBlackMarket() {
+            const modal = document.getElementById('blackMarketModal');
+            // Arka plandaki kayma animasyonunu kilitlemek için (Yorumlar modalı ile uyumlu)
+            document.body.classList.add('modal-open');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                document.getElementById('bmModalCard').classList.remove('scale-95');
+                document.getElementById('bmModalCard').classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeBlackMarket() {
+            const modal = document.getElementById('blackMarketModal');
+            document.body.classList.remove('modal-open');
+            
+            document.getElementById('bmModalCard').classList.remove('scale-100');
+            document.getElementById('bmModalCard').classList.add('scale-95');
+            modal.classList.add('opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Dış boşluğa basınca kapatma mekanizması
+        document.getElementById('blackMarketModal').addEventListener('click', function(e) {
+            const card = document.getElementById('bmModalCard');
+            if (!card.contains(e.target)) {
+                closeBlackMarket();
+            }
+        });
+
+        // ESC tuşu ile kapatma desteği
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeBlackMarket();
+        });
+    </script>
     
     </section>
 
