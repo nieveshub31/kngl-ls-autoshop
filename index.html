@@ -123,50 +123,18 @@
                 <a href="#galeri" class="hover:text-red-500 transition">Projeler</a>
             </div>
 
-<!-- ================================================================= -->
-<!-- AGRESİF SİBER TESİS AKTİF PANELİ -->
-<!-- ================================================================= -->
-<div class="relative flex items-center space-x-3 bg-neutral-950/90 border border-red-600/30 px-4 py-2 rounded-xl shadow-[0_0_20px_rgba(220,38,38,0.05)] select-none group hover:border-red-600/60 transition-colors duration-300">
+<div class="flex items-center space-x-2.5 bg-neutral-950/80 border border-red-600/20 px-3.5 py-2 rounded-xl shadow-[inset_0_0_15px_rgba(0,0,0,0.6)] select-none">
     
-    <!-- Arka Plan Sinyal Efekti (Hafif Kırmızı Işıma) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-red-600/5 to-transparent rounded-xl pointer-events-none"></div>
-
-    <!-- Canlı Sinyal Işığı (Neon Pulse) -->
-    <div class="flex h-2.5 w-2.5 relative items-center justify-center">
-        <!-- Arkadan yayılan neon dalga -->
-        <span class="animate-ping absolute inline-flex h-5 w-5 rounded-full bg-red-500/40 opacity-75"></span>
-        <!-- Merkezdeki parlak çekirdek ışık -->
-        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600 shadow-[0_0_10px_#dc2626]"></span>
+    <div class="flex h-2 w-2 relative items-center justify-center">
+        <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-emerald-500/40 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500 shadow-[0_0_8px_#10b981]"></span>
     </div>
 
-    <!-- Siber Metin Alanı -->
-    <div class="flex flex-col text-left">
-        <span class="text-white text-[10px] font-black uppercase tracking-widest heading-font leading-none group-hover:text-red-500 transition-colors duration-300">
-            TESİS AKTİF
-        </span>
-        <!-- Altındaki Canlı Değişen Siber Bilgi Satırı -->
-        <span class="text-[8px] font-mono text-gray-500 tracking-wider uppercase mt-1 flex items-center space-x-1">
-            <span class="text-red-600/70">SECURE_LINK //</span> 
-            <span id="cyberPing">MS: 12</span>
-        </span>
-    </div>
+    <span class="text-white text-[10px] font-black uppercase tracking-widest heading-font leading-none">
+        TESİS <span class="text-red-600">AKTİF</span>
+    </span>
+
 </div>
-
-<!-- CANLI VERİ DEĞİŞİM MOTORU (SCRIPT) -->
-<script>
-    // Altındaki MS (Ping) değerini canlı olarak hafifçe oynatan siber motor
-    document.addEventListener("DOMContentLoaded", function() {
-        const pingDisplay = document.getElementById('cyberPing');
-        if (pingDisplay) {
-            setInterval(() => {
-                // 11 ile 16 milisaniye arasında rastgele gerçekçi bir dalgalanma yaratır
-                const randomPing = Math.floor(Math.random() * (16 - 11 + 1)) + 11;
-                pingDisplay.innerText = `MS: ${randomPing}`;
-            }, 1800); // Her 1.8 saniyede bir güncellenir
-        }
-    });
-</script>
-<!-- ================================================================= -->
     </nav>
 
     <header class="relative h-screen flex items-center justify-center overflow-hidden">
