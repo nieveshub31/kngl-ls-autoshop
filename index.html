@@ -417,7 +417,7 @@
        
     </section>
     
-<!-- MÜŞTERİ YORUMLARI SEKMESİ (%100 KESİNTİSİZ GERÇEK CSS SONSUZ DÖNGÜSÜ) -->
+<!-- MÜŞTERİ YORUMLARI SEKMESİ (BÜYÜK EKRAN GARANTİLİ SONSUZ DÖNGÜ) -->
     <section id="yorumlar" class="py-20 bg-black/40 relative overflow-hidden border-t border-b border-white/5">
         <div class="text-center mb-12" data-aos="fade-up">
             <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">FEEDBACK</span>
@@ -426,114 +426,8 @@
         </div>
 
         <!-- Kayma Alanı Dış Çerçeve -->
-        <div class="w-full overflow-hidden flex select-none">
-            
-            <!-- ANA TAŞIYICI KUTU (Animasyon sadece buna biner ve durmadan sola akar) -->
-            <div class="ls-marquee-content">
-                
-                <!-- 1. GRUP (ORİJİNAL LİSTE) -->
-                <div class="ls-marquee-track">
-                    <!-- Yorum 1 -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Anıl Yılmaz', 'Opel Corsa D', 'Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Anıl Yılmaz</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Opel Corsa D</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 2 -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Berkcan K.', 'Nissan Silvia S14', 'Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Berkcan K.</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Nissan Silvia S14</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 3 -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Ufuk T.', 'Accent Blue', 'Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Ufuk T.</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Accent Blue</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 4 -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Murat Demir', 'Stage 2 Setup', 'Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Murat Demir</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Stage 2 Setup</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. GRUP (DÖNGÜYÜ BAĞLAYAN BİREBİR KOPYA LİSTE) -->
-                <div class="ls-marquee-track" aria-hidden="true">
-                    <!-- Yorum 1 Kopya -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Anıl Yılmaz', 'Opel Corsa D', 'Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Anıl Yılmaz</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Opel Corsa D</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 2 Kopya -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Berkcan K.', 'Nissan Silvia S14', 'Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Berkcan K.</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Nissan Silvia S14</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 3 Kopya -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Ufuk T.', 'Accent Blue', 'Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Ufuk T.</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Accent Blue</span>
-                        </div>
-                    </div>
-
-                    <!-- Yorum 4 Kopya -->
-                    <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('Murat Demir', 'Stage 2 Setup', 'Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler.', 5)">
-                        <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
-                        <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
-                            <span class="text-white font-bold text-xs uppercase tracking-wider">Murat Demir</span>
-                            <span class="text-gray-500 text-[10px] uppercase">Stage 2 Setup</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="w-full overflow-hidden flex select-none" id="marqueeWrapper">
+            <!-- JS, sıçramasız sonsuz zinciri buraya dinamik inşa edecek -->
         </div>
     </section>
 
@@ -557,23 +451,21 @@
         </div>
     </div>
 
-    <!-- MATEMATİKSEL OLARAK KUSURSUZLAŞTIRILMIŞ CSS -->
+    <!-- GEOMETRİK OLARAK AYARLANMIŞ GÖMÜLÜ STYLES -->
     <style>
-        /* İki grubun YAN YANA tek bir blok gibi davranmasını sağlayan ana gövde */
         .ls-marquee-content {
             display: flex;
             width: max-content;
-            animation: kusursuzSonsuzDöngü 25s linear infinite; /* Hız ayarı */
+            animation: kesintisizSiberAkis 35s linear infinite; /* Akış hızı */
         }
 
-        /* Grupları flex yaparak içindeki kartları yan yana dizer ve aralarına 1.5rem (24px) boşluk verir */
         .ls-marquee-track {
             display: flex;
             gap: 1.5rem;
-            padding-right: 1.5rem; /* İki grup birbirine bağlanırken aradaki boşluğun milimetrik eşit kalması için şart */
+            padding-right: 1.5rem; /* Boşlukların milimetrik eşitliği için */
         }
 
-        /* Fare üstündeyken kayma ASLA DURMAZ! Sadece siber pencere açıkken arkada donar */
+        /* Hoverda DURMAZ. Sadece modal açıkken akış kilitlenir */
         body.modal-open .ls-marquee-content {
             animation-play-state: paused;
         }
@@ -592,19 +484,54 @@
         }
 
         /* 
-           Ana gövde tam yarısına (-50%) kadar kaydığında, 2. grup 1. grubun yerini alır.
-           Tam o salisede animasyon 0%'a sıçrar. İki grup birebir aynı olduğu için ziyaretçi 
-           hiçbir atlama veya başa sarma görmez, sonsuz döngü illüzyonu oluşur.
+           Toplam 4 adet grup yan yana dizildiği için, sistemin tam 1 tur dönmesi %25 kaymaya eşittir.
+           %25'e ulaştığı an çaktırmadan sıfıra döner ve sağ tarafta hiçbir boşluk/zıplama oluşmaz.
         */
-        @keyframes kusursuzSonsuzDöngü {
+        @keyframes kesintisizSiberAkis {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-25%); }
         }
     </style>
 
-    <!-- SİBER PENCERE VE DIŞARIYA BASINCA KAPANMA SCRIPT'I -->
+    <!-- GÜVENLİ ZİNCİR OLUŞTURAN AKILLI SCRIPT -->
     <script>
-        // Siber Pencereyi Açma
+        // Yorum Verilerin
+        const yorumlarVerisi = [
+            { name: "Anıl Yılmaz", vehicle: "Opel Corsa D", text: "Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik.", stars: 5 },
+            { name: "Berkcan K.", vehicle: "Nissan Silvia S14", text: "Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam.", stars: 5 },
+            { name: "Ufuk T.", vehicle: "Accent Blue", text: "Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli.", stars: 5 },
+            { name: "Murat Demir", vehicle: "Stage 2 Setup", text: "Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler.", stars: 5 }
+        ];
+
+        function createMarquee() {
+            const wrapper = document.getElementById('marqueeWrapper');
+            let htmlStructure = '<div class="ls-marquee-content">';
+            
+            // Büyük ekranlarda trenin kopmaması için yan yana 4 grup halinde basıyoruz (Garantili Safe-Zone)
+            for (let i = 0; i < 4; i++) {
+                htmlStructure += '<div class="ls-marquee-track" ' + (i > 0 ? 'aria-hidden="true"' : '') + '>';
+                yorumlarVerisi.forEach((item) => {
+                    htmlStructure += `
+                        <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer" onclick="openCommentModal('${item.name}', '${item.vehicle}', \`${item.text}\`, ${item.stars})">
+                            <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
+                                ${'<i class="fa-solid fa-star"></i>'.repeat(item.stars)}
+                            </div>
+                            <p class="text-gray-300 text-xs font-light leading-relaxed mb-4 pointer-events-none">"${item.text}"</p>
+                            <div class="border-t border-white/5 pt-3 flex items-center justify-between pointer-events-none">
+                                <span class="text-white font-bold text-xs uppercase tracking-wider">${item.name}</span>
+                                <span class="text-gray-500 text-[10px] uppercase">${item.vehicle}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                htmlStructure += '</div>';
+            }
+            
+            htmlStructure += '</div>';
+            wrapper.innerHTML = htmlStructure;
+        }
+
+        // Modal Açma
         function openCommentModal(name, vehicle, text, stars) {
             const modal = document.getElementById('commentModal');
             document.body.classList.add('modal-open');
@@ -623,7 +550,7 @@
             }, 10);
         }
 
-        // Siber Pencereyi Kapatma
+        // Modal Kapatma
         function closeCommentModal() {
             const modal = document.getElementById('commentModal');
             document.body.classList.remove('modal-open');
@@ -638,21 +565,22 @@
             }, 300);
         }
 
-        // KARTIN DIŞINDAKİ ALANA (KARARTILMIŞ ALAN) BASTIĞINDA KAPATMA
+        // Dış Boşluğa Basınca Kapatma Mekanizması
         document.getElementById('commentModal').addEventListener('click', function(e) {
             const card = document.getElementById('modalCard');
-            // Eğer tıklanan element pencere kartı veya onun içindeki bir şey değilse kapat
             if (!card.contains(e.target)) {
                 closeCommentModal();
             }
         });
 
-        // ESC Tuşu ile Kapatma Esnekliği
+        // ESC Desteği
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeCommentModal();
         });
-    </script>
 
+        // Sistemi Başlat
+        createMarquee();
+    </script>
     
     </section>
 
