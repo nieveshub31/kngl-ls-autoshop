@@ -416,7 +416,7 @@
         </div>
     </section>
     
-   <!-- MÜŞTERİ YORUMLARI SEKMESİ (KENDİNDEN ANİMASYONLU SIKILAŞTIRILMIŞ SÜRÜM) -->
+  <!-- MÜŞTERİ YORUMLARI SEKMESİ (BOŞLUKSUZ & TIKLAYINCA BÜYÜYEN GÜNCEL SÜRÜM) -->
     <section id="yorumlar" class="py-20 bg-black/40 relative overflow-hidden border-t border-b border-white/5">
         <div class="text-center mb-12" data-aos="fade-up">
             <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">FEEDBACK</span>
@@ -424,111 +424,152 @@
             <div class="w-8 h-0.5 bg-red-600 mx-auto mt-3"></div>
         </div>
 
-        <!-- Kayma Alanı (Boşluklar daraltıldı: gap-3) -->
-        <div class="flex overflow-hidden select-none relative w-full gap-3">
+        <!-- Kayma Alanı (Ana Kapsayıcı) -->
+        <div class="marquee-wrapper relative w-full overflow-hidden flex select-none">
             
-            <!-- 1. YORUM GRUBU (Sola Kayma Akışı - Tıklayınca Büyür) -->
-            <div class="flex flex-nowrap gap-3 min-w-full shrink-0 animate-[kaydirSola_30s_linear_infinite]">
+            <!-- 1. YORUM GRUBU -->
+            <div class="marquee-track flex gap-4 shrink-0">
                 
                 <!-- Yorum 1 -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Anıl Yılmaz</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Opel Corsa D</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Opel Corsa D</span>
                     </div>
                 </div>
 
                 <!-- Yorum 2 -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Berkcan K.</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Nissan Silvia S14</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Nissan Silvia S14</span>
                     </div>
                 </div>
 
                 <!-- Yorum 3 -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Ufuk T.</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Accent Blue</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Accent Blue</span>
                     </div>
                 </div>
 
                 <!-- Yorum 4 -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Murat Demir</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Stage 2 Setup</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Stage 2 Setup</span>
                     </div>
                 </div>
 
             </div>
 
-            <!-- 2. YORUM GRUBU (Sonsuz Döngü İllüzyonu İçin Kopya) -->
-            <div class="flex flex-nowrap gap-3 min-w-full shrink-0 animate-[kaydirSola_30s_linear_infinite]" aria-hidden="true">
+            <!-- 2. YORUM GRUBU (Boşluksuz Döngü İçin Birebir Kopya) -->
+            <div class="marquee-track flex gap-4 shrink-0" aria-hidden="true">
                 <!-- Yorum 1 Kopya -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Corsa D aracımın çözülemeyen DPF ve duman sorununu Baş Usta tek seferde nokta atışı çözdü. Gerçekten profesyonel mekanik."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Anıl Yılmaz</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Opel Corsa D</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Opel Corsa D</span>
                     </div>
                 </div>
                 <!-- Yorum 2 Kopya -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Silvia S14 projemiz için custom egzoz ve şasi güçlendirme yaptırdık. Kaynak işçiliği ve custom imalat kalitesi muazzam."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Berkcan K.</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Nissan Silvia S14</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Nissan Silvia S14</span>
                     </div>
                 </div>
                 <!-- Yorum 3 Kopya -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Araca yaptıkları custom iç ambiyans aydınlatması ve siber hatlar tek kelimeyle kusursuz oldu. Gece sürüşleri artık çok daha keyifli."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Ufuk T.</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Accent Blue</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Accent Blue</span>
                     </div>
                 </div>
                 <!-- Yorum 4 Kopya -->
-                <div class="w-[360px] shrink-0 bg-neutral-900/60 border border-white/5 rounded-3xl p-6 relative transition duration-300 active:scale-105 active:border-red-600/60 active:shadow-[0_0_20px_rgba(220,38,38,0.2)]">
+                <div class="marquee-card w-[340px] shrink-0 bg-neutral-900/80 border border-white/5 rounded-3xl p-6 relative cursor-pointer transition-all duration-300">
                     <div class="flex items-center space-x-1 text-red-500 text-xs mb-3">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
-                    <p class="text-gray-400 text-xs font-light leading-relaxed mb-4">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
+                    <p class="text-gray-300 text-xs font-normal leading-relaxed mb-4">"Yazılım ve Stage 2 yüklemesinden sonra araba resmen canavara dönüştü. Dyno testindeki şeffaflıkları ve ilgileri için Tuner ekibine teşekkürler."</p>
                     <div class="border-t border-white/5 pt-3 flex items-center justify-between">
                         <span class="text-white font-bold text-xs uppercase tracking-wider">Murat Demir</span>
-                        <span class="text-gray-600 text-[10px] uppercase">Stage 2 Setup</span>
+                        <span class="text-gray-500 text-[10px] uppercase">Stage 2 Setup</span>
                     </div>
                 </div>
             </div>
 
         </div>
+    </section>
+
+    <!-- KUSURSUZ DÖNGÜ VE TIKLAMA HAKİMİYETİ İÇİN GÖMÜLÜ STYLES -->
+    <style>
+        /* Ana taşıyıcı genişliği iki parça arasında boşluk bırakmayacak şekilde senkronize edildi */
+        .marquee-wrapper {
+            gap: 1rem;
+        }
+        
+        .marquee-track {
+            width: max-content;
+            animation: kaydirSolaKesintisiz 25s linear infinite;
+        }
+
+        /* TIKLAMA (ACTIVE) DURUMUNDA TETİKLENECEK AKILLI KURALLAR */
+        /* Herhangi bir karta tıklandığında (basılı tutulduğunda) tüm şeridin kaymasını dondurur */
+        .marquee-wrapper:has(.marquee-card:active) .marquee-track {
+            animation-play-state: paused;
+        }
+
+        /* Tıklanan kartı büyütür, öne çıkarır ve okunurluğu artırır */
+        .marquee-card:active {
+            transform: scale(1.1) !important;
+            border-color: rgba(220, 38, 38, 0.8) !important;
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.4);
+            background-color: #0a0a0a !important; /* Arka plan koyulaşır yazı netleşir */
+            z-index: 999;
+        }
+
+        /* Yazıların kontrastını artırarak okunabilirliği güçlendirdik */
+        .marquee-card p {
+            color: #e5e5e5 !important;
+        }
+
+        @keyframes kaydirSolaKesintisiz {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% - 0.5rem)); } /* Boşluk payı sıfırlandı */
+        }
+    </style>
+
+    
     </section>
 
     <!-- Tarayıcıya Kaydırma Animasyonunu Tanıtan CSS (HTML'e Gömülü) -->
