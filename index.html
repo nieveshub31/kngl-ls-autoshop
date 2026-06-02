@@ -790,6 +790,163 @@
         </div>
     </section>
 
+<!-- ================================================================= -->
+<!-- 1. GARAJ CANLI DURUM PANELİ (LIVE GARAJE STATUS) -->
+<!-- ================================================================= -->
+<section id="garaj-durum" class="py-12 bg-neutral-950 border-t border-white/5 relative select-none">
+    <div class="max-w-6xl mx-auto px-4">
+        <!-- Siber Panel Kapsayıcı -->
+        <div class="bg-black/40 border border-red-600/20 rounded-3xl p-6 md:p-8 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] flex flex-col md:flex-row items-center justify-between gap-6">
+            
+            <!-- Sol Taraf: Canlı Durum Başlığı -->
+            <div class="flex items-center space-x-4 w-full md:w-auto">
+                <div class="relative flex h-3 w-3 items-center justify-center">
+                    <span class="animate-ping absolute inline-flex h-6 w-6 rounded-full bg-emerald-500/20 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_#10b981]"></span>
+                </div>
+                <div>
+                    <span class="text-red-600 text-[8px] font-bold uppercase tracking-widest block leading-none mb-1">LIVE TELEMETRY</span>
+                    <h4 class="heading-font text-white font-black text-sm uppercase tracking-widest">ATÖLYE CANLI DURUM</h4>
+                </div>
+            </div>
+
+            <!-- Orta Taraf: Canlı Akış Bilgileri -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full flex-1 md:px-6">
+                <!-- Lifteki Araç -->
+                <div class="bg-neutral-950/60 border border-white/5 px-4 py-2.5 rounded-xl">
+                    <span class="text-gray-500 text-[8px] uppercase tracking-wider block mb-0.5">LİFTEKİ PROJE</span>
+                    <span id="liveLiftVehicle" class="text-gray-200 text-xs font-medium heading-font tracking-wide">Opel Corsa D // DPF & Egzoz İptali</span>
+                </div>
+                <!-- Sıradaki Araç -->
+                <div class="bg-neutral-950/60 border border-white/5 px-4 py-2.5 rounded-xl">
+                    <span class="text-gray-500 text-[8px] uppercase tracking-wider block mb-0.5">SIRADAKİ REYON</span>
+                    <span id="liveNextVehicle" class="text-gray-200 text-xs font-medium heading-font tracking-wide">Nissan Silvia S14 // Sektör Yazılım</span>
+                </div>
+                <!-- Garaj Yoğunluğu -->
+                <div class="bg-neutral-950/60 border border-white/5 px-4 py-2.5 rounded-xl flex items-center justify-between">
+                    <div>
+                        <span class="text-gray-500 text-[8px] uppercase tracking-wider block mb-0.5">Mevcut Doluluk</span>
+                        <span class="text-red-500 text-xs font-black heading-font tracking-widest animate-pulse">KRİTİK SEVİYE</span>
+                    </div>
+                    <span class="text-white font-mono text-xl font-bold bg-red-950/40 border border-red-600/20 px-2 py-0.5 rounded-lg">%85</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================================================================= -->
+<!-- 3. MÜŞTERİ ARABALARI GLITCH GALERİSİ (OUTTAKES) -->
+<!-- ================================================================= -->
+<section id="garaj-galeri" class="py-20 bg-neutral-950 border-t border-white/5 relative">
+    <div class="max-w-6xl mx-auto px-4">
+        
+        <!-- Bölüm Başlığı -->
+        <div class="text-center mb-12">
+            <span class="text-red-600 text-[9px] font-bold uppercase tracking-widest mb-1 block">DELIVERED MONSTERS</span>
+            <h3 class="heading-font text-xl font-bold text-white uppercase tracking-tight">TESLİM EDİLEN <span class="text-red-600 italic">PROJELER</span></h3>
+            <div class="w-6 h-0.5 bg-red-600 mx-auto mt-3"></div>
+        </div>
+
+        <!-- Fotoğraf Grid Yapısı -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Foto 1 (Opel Corsa D Örneği) -->
+            <div class="glitch-card group relative bg-neutral-900 border border-white/5 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                <!-- Buraya projedeki araba resmini koyabilirsin knk -->
+                <img src="https://images.unsplash.com/photo-1617469767053-d3b508a0d84e?q=80&w=600" alt="Corsa D Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0">
+                <!-- Üzerine gelince beliren siber şerit overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <!-- Siber Tarama Çizgisi (Scanline) Efekti -->
+                <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
+                <!-- Kart Yazıları -->
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                    <div>
+                        <h5 class="text-white font-bold text-xs uppercase tracking-wider heading-font">Opel Corsa D</h5>
+                        <p class="text-red-500 font-mono text-[9px] tracking-widest mt-0.5">STATUS // COMPLETE</p>
+                    </div>
+                    <span class="text-gray-400 text-[8px] font-mono border border-white/10 px-2 py-0.5 rounded bg-black/60">#STAGE1_PLUS</span>
+                </div>
+            </div>
+
+            <!-- Foto 2 (Silvia S14 Örneği) -->
+            <div class="glitch-card group relative bg-neutral-900 border border-white/5 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=600" alt="Silvia S14 Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                    <div>
+                        <h5 class="text-white font-bold text-xs uppercase tracking-wider heading-font">Nissan Silvia S14</h5>
+                        <p class="text-red-500 font-mono text-[9px] tracking-widest mt-0.5">STATUS // RE-MAPPED</p>
+                    </div>
+                    <span class="text-gray-400 text-[8px] font-mono border border-white/10 px-2 py-0.5 rounded bg-black/60">#CUSTOM_TURBO</span>
+                </div>
+            </div>
+
+            <!-- Foto 3 (Hyundai Accent Örneği) -->
+            <div class="glitch-card group relative bg-neutral-900 border border-white/5 rounded-2xl overflow-hidden aspect-video shadow-lg">
+                <img src="https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=600" alt="Accent Project" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 filter grayscale group-hover:grayscale-0">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%]"></div>
+                <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+                    <div>
+                        <h5 class="text-white font-bold text-xs uppercase tracking-wider heading-font">Hyundai Accent</h5>
+                        <p class="text-red-500 font-mono text-[9px] tracking-widest mt-0.5">STATUS // OPTIMIZED</p>
+                    </div>
+                    <span class="text-gray-400 text-[8px] font-mono border border-white/10 px-2 py-0.5 rounded bg-black/60">#AMBIENT_LIGHT</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CANLI GARAJ DURUM DÖNGÜSÜ (JAVASCRIPT) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lifteki ve sıradaki araçların gerçekçi görünmesi için havuz oluşturduk
+        const liftProjects = [
+            "Opel Corsa D // DPF & Egzoz İptali",
+            "Nissan Silvia S14 // Twin-Turbo Montajı",
+            "Hyundai Accent // Ambiyans Aydınlatma Entegresi",
+            "Declasse Asea // Warex Supap Ayarı"
+        ];
+        
+        const nextProjects = [
+            "Nissan Silvia S14 // Stage 2 Siber Yazılım",
+            "Maxwell Asbo // Pop & Bang Kalibrasyonu",
+            "Annis Remus // Komple Düz Boru Egzoz",
+            "BMW F30 // KUP10 Özel Koku Enjeksiyonu"
+        ];
+
+        const liftEl = document.getElementById('liveLiftVehicle');
+        const nextEl = document.getElementById('liveNextVehicle');
+
+        if (liftEl && nextEl) {
+            setInterval(() => {
+                // Rastgele projeleri seçip canlı akış simülasyonu yapar
+                const randomLift = liftProjects[Math.floor(Math.random() * liftProjects.length)];
+                const randomNext = nextProjects[Math.floor(Math.random() * nextProjects.length)];
+                
+                // Hafif glitch geçiş efekti hissi vermek için önce boşaltıp sonra basıyoruz
+                liftEl.style.opacity = 0.3;
+                nextEl.style.opacity = 0.3;
+                
+                setTimeout(() => {
+                    liftEl.innerText = randomLift;
+                    nextEl.innerText = randomNext;
+                    liftEl.style.opacity = 1;
+                    nextEl.style.opacity = 1;
+                }, 300);
+
+            }, 7000); // Her 7 saniyede bir dükkandaki iş durumu güncellenir
+        </div>
+    });
+</script>
+    
+
     <!-- GİZLİ KARABORSA PENCERESİ (MODAL) -->
     <div id="blackMarketModal" class="fixed inset-0 z-[99999] hidden flex items-center justify-center p-4 backdrop-blur-md bg-black/90 opacity-0 transition-opacity duration-300">
         <!-- İç Panel Kartı -->
