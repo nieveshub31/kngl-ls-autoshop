@@ -1212,7 +1212,7 @@
     var player;
     var isAudioActive = false;
     
-    // 🛠️ BURADAKİ ID'Yİ KENDİ ŞARKININ LİNKİNDEKİ ID İLE DEĞİŞTİR KNK
+    // 🛠️ YOUTUBE ŞARKI ID'Sİ
     var youtubeVideoId = "KGeY5ZW42-M"; 
 
     function onYouTubeIframeAPIReady() {
@@ -1235,20 +1235,18 @@
     }
 
     function onPlayerReady(event) {
-        // Tam istediğin gibi başlangıç sesini %20 yapıyoruz knk
-        player.setVolume(20);
+        player.setVolume(20); // İlk ses %20
         
-        // Tarayıcı engelini aşmak için loader'a veya ekrana dokunulduğu/tıklandığı ilk an müzik canlanacak
-        const startTriggers = ['click', 'touchstart', 'mousemove', 'scroll'];
-        startTriggers.forEach(trigger => {
-            document.addEventListener(trigger, bootAudioEngine, { once: true, passive: true });
+        // ⚡ MÜTHİŞ KURNAZLIK: Kullanıcı sayfaya girdiği an yapacağı en ufak harekette (mouse oynatma, kaydırma, tıklama) ses kilitlenmeden anında devreye girer.
+        const triggers = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
+        triggers.forEach(t => {
+            document.addEventListener(t, startMusicSubtle, { once: true, passive: true });
         });
     }
 
-    function bootAudioEngine() {
+    function startMusicSubtle() {
         if (isAudioActive) return;
         isAudioActive = true;
-        
         if (player && typeof player.playVideo === 'function') {
             player.playVideo();
             updatePlayerUI(true);
@@ -1261,15 +1259,12 @@
     const statusText = document.getElementById('audioStatusText');
     const bars = document.querySelectorAll('.audio-bar');
 
-    // PLAY / PAUSE
     if(toggleBtn) {
         toggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             if (!player) return;
             isAudioActive = true; 
-            
-            var playerState = player.getPlayerState();
-            if (playerState == 1) { 
+            if (player.getPlayerState() == 1) { 
                 player.pauseVideo();
                 updatePlayerUI(false);
             } else {
@@ -1279,7 +1274,6 @@
         });
     }
 
-    // KAYAR SES ÇUBUĞU ENTEGRASYONU
     if(volumeSlider) {
         volumeSlider.addEventListener('input', function(e) {
             e.stopPropagation();
