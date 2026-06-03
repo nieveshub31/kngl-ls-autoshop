@@ -1144,5 +1144,132 @@
         }
         function closeLightbox() { document.getElementById('lightboxModal').classList.add('hidden'); }
     </script>
+
+<!-- ================================================================= -->
+<!-- BAĞIMSIZ SOL ÜST SİBER YOUTUBE MUSIC PLAYER -->
+<!-- ================================================================= -->
+<div id="siber-player" class="fixed top-4 left-4 z-[9999] select-none pointer-events-auto">
+    <div class="flex items-center space-x-3 bg-neutral-950/90 border border-red-600/30 px-3 py-1.5 rounded-xl shadow-[0_0_20px_rgba(220,38,38,0.15)] backdrop-blur-md">
+        
+        <!-- Gizli YouTube Oynatıcı Alanı (Görünmez) -->
+        <div id="yt-placeholder" class="hidden"></div>
+
+        <!-- Oynat / Durdur Siber Butonu -->
+        <button id="musicToggleBtn" class="w-6 h-6 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 transition-all duration-300 text-[10px] cursor-pointer" title="Müziği Başlat/Durdur">
+            <i id="musicIcon" class="fa-solid fa-pause"></i>
+        </button>
+
+        <!-- Bilgi Paneli & Kayan Yazı -->
+        <div class="flex flex-col justify-center w-28 overflow-hidden">
+            <span class="text-red-600 text-[7px] font-mono font-black tracking-widest block leading-none mb-0.5">LIVE AUDIO // VOL 50%</span>
+            <div class="w-full overflow-hidden whitespace-nowrap relative">
+                <!-- 🛠️ ŞARKI İSMİNİ BURADAN DEĞİŞTİREBİLİRSİN KNK -->
+                <span id="trackName" class="inline-block text-[10px] text-gray-400 font-medium heading-font tracking-wide animate-[playerMarquee_10s_linear_infinite]">
+                    LS_UNDERGROUND_RADIO.MP3 // TRACK_ACTIVE — 
+                </span>
+            </div>
+        </div>
+
+        <!-- Canlı Ses Dalgası (Equalizer) Animasyonu -->
+        <div class="flex items-center space-x-0.5 h-3 px-1">
+            <span class="audio-bar w-0.5 h-1 bg-red-600 rounded-full transition-all duration-300 animate-pulse"></span>
+            <span class="audio-bar w-0.5 h-2 bg-red-500 rounded-full transition-all duration-300 animate-pulse[animation-delay:0.2s]"></span>
+            <span class="audio-bar w-0.5 h-1.5 bg-red-600 rounded-full transition-all duration-300 animate-pulse[animation-delay:0.4s]"></span>
+        </div>
+    </div>
+</div>
+
+<!-- CSS KAYAN YAZI STİLİ -->
+<style>
+    @keyframes playerMarquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+</style>
+
+<!-- YOUTUBE PLAYER API MOTORU -->
+<script>
+    // 1. YouTube Iframe API'yi yükle
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    // 🛠️ BURADAKİ VIDEO ID'SİNİ KENDİ YOUTUBE LİNKİNDEKİ ID İLE DEĞİŞTİR KNK
+    // Örn: https://www.youtube.com/watch?v=dQw4w9WgXcQ ise ID "dQw4w9WgXcQ" kısımdır.
+    var youtubeVideoId = "KGeY5ZW42-M"; 
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('yt-placeholder', {
+            height: '0',
+            width: '0',
+            videoId: youtubeVideoId,
+            playerVars: {
+                'autoplay': 1,
+                'loop': 1,
+                'playlist': youtubeVideoId, // Döngü (loop) çalışması için şart
+                'controls': 0,
+                'showinfo': 0,
+                'rel': 0
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        // Sesi senin istediğin gibi tam %50 seviyesine çekiyoruz
+        player.setVolume(50);
+        
+        // Tarayıcı engeline takılmamak için kullanıcı site içinde ilk tıkladığı an müzik başlar
+        document.addEventListener('click', autoPlaySetup, { once: true });
+        document.addEventListener('touchstart', autoPlaySetup, { once: true });
+    }
+
+    function autoPlaySetup() {
+        if (player && typeof player.playVideo === 'function') {
+            player.playVideo();
+            updateUI(true);
+        }
+    }
+
+    // Arayüz ve Buton Kontrolleri
+    const toggleBtn = document.getElementById('musicToggleBtn');
+    const icon = document.getElementById('musicIcon');
+    const bars = document.querySelectorAll('.audio-bar');
+
+    if(toggleBtn) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Otomatik oynatma tetikleyicisini bozmasın
+            if (!player) return;
+
+            var playerState = player.getPlayerState();
+            if (playerState == 1) { // 1 = Oynatılıyor
+                player.pauseVideo();
+                updateUI(false);
+            } else {
+                player.playVideo();
+                updateUI(true);
+            }
+        });
+    }
+
+    function updateUI(isPlaying) {
+        if(isPlaying) {
+            icon.className = "fa-solid fa-pause";
+            toggleBtn.className = "w-6 h-6 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 transition-all duration-300 text-[10px] cursor-pointer";
+            bars.forEach(bar => bar.style.display = "block");
+        } else {
+            icon.className = "fa-solid fa-play";
+            toggleBtn.className = "w-6 h-6 rounded-lg bg-red-950/40 border border-red-600/40 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white transition-all duration-300 text-[10px] cursor-pointer";
+            bars.forEach(bar => bar.style.display = "none");
+        }
+    }
+</script>
+<!-- ================================================================= -->
+
+    
 </body>
 </html>
