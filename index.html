@@ -1146,63 +1146,6 @@
     </script>
 
     
-<!-- ================================================================= -->
-<!-- ANINDA BAŞLAYAN (SIFIR GECİKME) KAYAR SES ÇUBUKLU SİBER PLAYER -->
-<!-- ================================================================= -->
-<div id="siber-player" class="fixed top-4 left-4 z-[99999] select-none pointer-events-auto">
-    <div class="flex items-center space-x-3 bg-neutral-950/95 border border-red-600/40 px-3.5 py-2 rounded-lg shadow-[0_0_20px_rgba(220,38,38,0.2)] backdrop-blur-md font-mono">
-        
-        <div id="yt-placeholder" class="hidden"></div>
-
-        <button id="musicToggleBtn" class="w-7 h-7 bg-red-600 text-white shadow-[0_0_8px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] font-black cursor-pointer transition-all border border-red-500/30 rounded-sm flex-shrink-0" title="Oynat/Durdur">
-            <span id="musicIcon">⏸</span>
-        </button>
-
-        <div class="flex items-center space-x-2 bg-black/60 border border-white/5 px-2 py-1 rounded-sm">
-            <span class="text-[9px] text-gray-500 font-bold">VOL</span>
-            <input type="range" id="volumeSlider" min="0" max="100" value="20" class="w-14 h-[3px] bg-neutral-800 rounded-none appearance-none cursor-pointer accent-red-600 focus:outline-none transition-all">
-        </div>
-
-        <div class="h-5 w-[1px] bg-red-600/20 flex-shrink-0"></div>
-
-        <div class="flex flex-col justify-center w-24 overflow-hidden flex-shrink-0">
-            <span id="audioStatusText" class="text-red-600 text-[7px] font-black tracking-wider block leading-none mb-0.5 animate-pulse">AUDIO // VOL 20%</span>
-            <div class="w-full overflow-hidden whitespace-nowrap relative">
-                <span id="trackName" class="inline-block text-[9px] text-gray-400 font-bold tracking-wide animate-[playerMarquee_10s_linear_infinite]">
-                    LS_TUNERS_RADIO.LIVE — SYSTEM_ONLINE — 
-                </span>
-            </div>
-        </div>
-
-        <div class="flex items-center space-x-0.5 h-2.5 px-0.5 flex-shrink-0">
-            <span class="audio-bar w-[2px] h-1 bg-red-600 rounded-sm transition-all duration-300 animate-pulse"></span>
-            <span class="audio-bar w-[2px] h-2 bg-red-500 rounded-sm transition-all duration-300 animate-pulse[animation-delay:0.2s]"></span>
-            <span class="audio-bar w-[2px] h-1.5 bg-red-600 rounded-sm transition-all duration-300 animate-pulse[animation-delay:0.4s]"></span>
-        </div>
-    </div>
-</div>
-
-<style>
-    @keyframes playerMarquee {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-    }
-    #volumeSlider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 8px;
-        height: 8px;
-        background: #dc2626;
-        cursor: pointer;
-        box-shadow: 0 0 6px #dc2626;
-        border-radius: 1px;
-    }
-    #siber-player {
-        will-change: transform;
-        transform: translateZ(0);
-    }
-</style>
-
 <div id="siber-player" class="fixed top-4 left-4 z-[99999] select-none pointer-events-auto">
     <div class="flex items-center space-x-3 bg-neutral-950/95 border border-red-600/40 px-3.5 py-2 rounded-lg shadow-[0_0_20px_rgba(220,38,38,0.2)] backdrop-blur-md font-mono">
         
@@ -1223,7 +1166,7 @@
             <span id="audioStatusText" class="text-red-600 text-[7px] font-black tracking-wider block leading-none mb-0.5 animate-pulse">AUDIO // VOL 20%</span>
             <div class="w-full overflow-hidden whitespace-nowrap relative">
                 <span id="trackName" class="inline-block text-[9px] text-gray-400 font-bold tracking-wide animate-[playerMarquee_10s_linear_infinite]">
-                    NİEVES.LIVE — SYSTEM_ONLINE — 
+                 NİEVES_RADIO.LIVE — SYSTEM_ONLINE — 
                 </span>
             </div>
         </div>
@@ -1267,35 +1210,36 @@
     
     let isTriggered = false;
 
-    // Sesi kod düzeyinde doğrudan %20'ye (0.2) çekiyoruz
+    // Sesi tam başlangıçta %20 (0.2) yapıyoruz
     if (audioEngine) {
         audioEngine.volume = 0.2;
     }
 
-    // ⚡ REFRESH BOZAN ANA MOTOR: Kullanıcı siteye girdiğinde yapacağı İLK harekette (tıklama, kaydırma, fare oynatma) anında tetiklenir
+    // ⚡ İLK HAREKETTE OTOMATİK BAŞLATMA MOTORU
     const bootSignals = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
     bootSignals.forEach(signal => {
         document.addEventListener(signal, function() {
             if (isTriggered) return;
             isTriggered = true;
             
-            if (audioEngine) {
+            if (audioEngine && audioEngine.paused) {
                 audioEngine.play()
                     .then(() => {
                         updatePlayerUI(true);
                     })
                     .catch(err => {
-                        // Eğer tarayıcı ilk milisaniyede aşırı katı davrandıysa durumu logla, bir sonraki tıklamada kesin açılır
-                        isTriggered = false; 
+                        isTriggered = false; // Tarayıcı engellediyse kilidi aç, sonraki tıklamada alsın
                     });
             }
         }, { once: true, passive: true });
     });
 
-    // PLAY / PAUSE MANUEL BUTON KONTROLÜ
-    if(toggleBtn && audioEngine) {
+    // ⏸ / ▶ MANUEL DURDUR BAŞLAT KONTROLÜ
+    if (toggleBtn && audioEngine) {
         toggleBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
+            e.stopPropagation(); // Diğer tıklama olaylarını ezmesin
+            isTriggered = true; // Manuel basıldıysa artık otomatik tetikleyiciyi tamamen sal
+            
             if (audioEngine.paused) {
                 audioEngine.play();
                 updatePlayerUI(true);
@@ -1306,32 +1250,39 @@
         });
     }
 
-    // SES SEVİYESİ KAYDIRICI KONTROLÜ
-    if(volumeSlider && audioEngine) {
+    // 🎚️ SES SEVİYESİ AYARLAYICI (DÜZELTİLDİ)
+    if (volumeSlider && audioEngine) {
         volumeSlider.addEventListener('input', function(e) {
             e.stopPropagation();
             const val = e.target.value;
-            audioEngine.volume = val / 100; // HTML5 Audio 0.0 ile 1.0 arasında çalışır
-            if(!audioEngine.paused) {
+            
+            // 🎯 KRİTİK DÜZELTME: Slider'dan gelen 0-100 değerini tarayıcının anladığı 0.0 - 1.0 arasına bölüyoruz
+            audioEngine.volume = val / 100; 
+            
+            if (!audioEngine.paused) {
                 statusText.innerText = "AUDIO // VOL " + val + "%";
+            } else {
+                statusText.innerText = "AUDIO // MUTED " + val + "%";
             }
         });
     }
 
+    // ARAYÜZ GÜNCELLEME MOTORU
     function updatePlayerUI(isPlaying) {
         const currentVol = volumeSlider ? volumeSlider.value : 20;
-        if(isPlaying) {
-            if(musicIcon) musicIcon.innerText = "⏸";
-            if(toggleBtn) toggleBtn.className = "w-7 h-7 bg-red-600 text-white shadow-[0_0_8px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] font-black cursor-pointer transition-all border border-red-500/30 rounded-sm flex-shrink-0";
-            bars.forEach(bar => bar.style.display = "block");
-            if(statusText) statusText.innerText = "AUDIO // VOL " + currentVol + "%";
+        if (isPlaying) {
+            if (musicIcon) musicIcon.innerText = "⏸";
+            if (toggleBtn) toggleBtn.className = "w-7 h-7 bg-red-600 text-white shadow-[0_0_8px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] font-black cursor-pointer transition-all border border-red-500/30 rounded-sm flex-shrink-0";
+            bars.forEach(bar => bar.style.opacity = "1");
+            if (statusText) statusText.innerText = "AUDIO // VOL " + currentVol + "%";
         } else {
-            if(musicIcon) musicIcon.innerText = "▶";
-            if(toggleBtn) toggleBtn.className = "w-7 h-7 bg-neutral-900 border border-red-600/30 text-red-500 flex items-center justify-center hover:bg-red-600 hover:text-white text-[10px] font-black cursor-pointer transition-all flex-shrink-0 rounded-sm";
-            bars.forEach(bar => bar.style.display = "none");
-            if(statusText) statusText.innerText = "AUDIO // PAUSED";
+            if (musicIcon) musicIcon.innerText = "▶";
+            if (toggleBtn) toggleBtn.className = "w-7 h-7 bg-neutral-900 border border-red-600/30 text-red-500 flex items-center justify-center hover:bg-red-600 hover:text-white text-[10px] font-black cursor-pointer transition-all flex-shrink-0 rounded-sm";
+            bars.forEach(bar => bar.style.opacity = "0");
+            if (statusText) statusText.innerText = "AUDIO // PAUSED";
         }
     }
 </script>
+    
 </body>
 </html>
