@@ -1144,27 +1144,42 @@
         }
         function closeLightbox() { document.getElementById('lightboxModal').classList.add('hidden'); }
     </script>
-
 <!-- ================================================================= -->
-<!-- BAĞIMSIZ SOL ÜST SİBER YOUTUBE MUSIC PLAYER -->
+<!-- GELİŞMİŞ BAĞIMSIZ SOL ÜST SİBER YOUTUBE MUSIC PLAYER -->
 <!-- ================================================================= -->
 <div id="siber-player" class="fixed top-4 left-4 z-[9999] select-none pointer-events-auto">
-    <div class="flex items-center space-x-3 bg-neutral-950/90 border border-red-600/30 px-3 py-1.5 rounded-xl shadow-[0_0_20px_rgba(220,38,38,0.15)] backdrop-blur-md">
+    <div class="flex items-center space-x-2 bg-neutral-950/95 border border-red-600/30 px-3 py-2 rounded-xl shadow-[0_0_25px_rgba(220,38,38,0.2)] backdrop-blur-md">
         
         <!-- Gizli YouTube Oynatıcı Alanı (Görünmez) -->
         <div id="yt-placeholder" class="hidden"></div>
 
-        <!-- Oynat / Durdur Siber Butonu -->
-        <button id="musicToggleBtn" class="w-6 h-6 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 transition-all duration-300 text-[10px] cursor-pointer" title="Müziği Başlat/Durdur">
-            <i id="musicIcon" class="fa-solid fa-pause"></i>
-        </button>
+        <!-- KONTROL BUTONLARI GRUBU -->
+        <div class="flex items-center space-x-1.5">
+            <!-- Sustur / Sesi Aç Butonu (Mute) -->
+            <button id="musicMuteBtn" class="w-6 h-6 rounded-lg bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[10px] cursor-pointer transition-all" title="Sesi Sustur/Aç">
+                <i id="muteIcon" class="fa-solid fa-volume-high"></i>
+            </button>
+
+            <!-- Oynat / Durdur Butonu -->
+            <button id="musicToggleBtn" class="w-7 h-7 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] cursor-pointer transition-all" title="Müziği Başlat/Durdur">
+                <i id="musicIcon" class="fa-solid fa-pause"></i>
+            </button>
+
+            <!-- İlerletme / Sonraki Şarkı Butonu (Next) -->
+            <button id="musicNextBtn" class="w-6 h-6 rounded-lg bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[10px] cursor-pointer transition-all" title="Sonraki Şarkı">
+                <i class="fa-solid fa-forward"></i>
+            </button>
+        </div>
+
+        <!-- Ayırıcı Çizgi -->
+        <div class="h-6 w-[1px] bg-white/10 mx-1"></div>
 
         <!-- Bilgi Paneli & Kayan Yazı -->
         <div class="flex flex-col justify-center w-28 overflow-hidden">
-            <span class="text-red-600 text-[7px] font-mono font-black tracking-widest block leading-none mb-0.5">LIVE AUDIO // VOL 50%</span>
+            <span id="audioStatusText" class="text-red-600 text-[7px] font-mono font-black tracking-widest block leading-none mb-0.5">LIVE AUDIO // VOL 50%</span>
             <div class="w-full overflow-hidden whitespace-nowrap relative">
                 <!-- 🛠️ ŞARKI İSMİNİ BURADAN DEĞİŞTİREBİLİRSİN KNK -->
-                <span id="trackName" class="inline-block text-[10px] text-gray-400 font-medium heading-font tracking-wide animate-[playerMarquee_10s_linear_infinite]">
+                <span id="trackName" class="inline-block text-[10px] text-gray-400 font-medium heading-font tracking-wide animate-[playerMarquee_12s_linear_infinite]">
                     LS_UNDERGROUND_RADIO.MP3 // TRACK_ACTIVE — 
                 </span>
             </div>
@@ -1187,17 +1202,18 @@
     }
 </style>
 
-<!-- YOUTUBE PLAYER API MOTORU -->
+<!-- YOUTUBE PLAYER API MOTORU VE KONTROLLERİ -->
 <script>
-    // 1. YouTube Iframe API'yi yükle
+    // 1. YouTube Iframe API yükleyicisi
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     var player;
-    // 🛠️ BURADAKİ VIDEO ID'SİNİ KENDİ YOUTUBE LİNKİNDEKİ ID İLE DEĞİŞTİR KNK
-    // Örn: https://www.youtube.com/watch?v=dQw4w9WgXcQ ise ID "dQw4w9WgXcQ" kısımdır.
+    
+    // 🛠️ BURAYA İSTER TEK BİR VİDEO ID'Sİ YAZABİLİRSİN, İSTER BİR YOUTUBE PLAYLIST ID'Sİ BAĞLAYABİLİRSİN KNK
+    // Eğer bir çalma listen varsa listeyi peş peşe ilerletmek için playlist ID'sini kullanmak çok daha iyi olur.
     var youtubeVideoId = "KGeY5ZW42-M"; 
 
     function onYouTubeIframeAPIReady() {
@@ -1208,7 +1224,7 @@
             playerVars: {
                 'autoplay': 1,
                 'loop': 1,
-                'playlist': youtubeVideoId, // Döngü (loop) çalışması için şart
+                'playlist': youtubeVideoId, // İlerletme ve döngü mekanizması için playlist tetikleyicisi
                 'controls': 0,
                 'showinfo': 0,
                 'rel': 0
@@ -1220,10 +1236,10 @@
     }
 
     function onPlayerReady(event) {
-        // Sesi senin istediğin gibi tam %50 seviyesine çekiyoruz
+        // İlk açılış ses seviyesi tam istediğin gibi %50 ayarlanıyor
         player.setVolume(50);
         
-        // Tarayıcı engeline takılmamak için kullanıcı site içinde ilk tıkladığı an müzik başlar
+        // Tarayıcı kısıtlamalarını aşmak adına site içi ilk etkileşimde (tıklama/dokunma) müzik tetiklenir
         document.addEventListener('click', autoPlaySetup, { once: true });
         document.addEventListener('touchstart', autoPlaySetup, { once: true });
     }
@@ -1235,18 +1251,23 @@
         }
     }
 
-    // Arayüz ve Buton Kontrolleri
+    // Arayüz Elementleri Tanımlamaları
     const toggleBtn = document.getElementById('musicToggleBtn');
-    const icon = document.getElementById('musicIcon');
+    const musicIcon = document.getElementById('musicIcon');
+    const muteBtn = document.getElementById('musicMuteBtn');
+    const muteIcon = document.getElementById('muteIcon');
+    const nextBtn = document.getElementById('musicNextBtn');
+    const statusText = document.getElementById('audioStatusText');
     const bars = document.querySelectorAll('.audio-bar');
 
+    // Oynat / Durdur Buton Fonksiyonu
     if(toggleBtn) {
         toggleBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Otomatik oynatma tetikleyicisini bozmasın
+            e.stopPropagation();
             if (!player) return;
 
             var playerState = player.getPlayerState();
-            if (playerState == 1) { // 1 = Oynatılıyor
+            if (playerState == 1) { // 1 = Oynatılıyor demek
                 player.pauseVideo();
                 updateUI(false);
             } else {
@@ -1256,15 +1277,51 @@
         });
     }
 
+    // Susturma / Mute Fonksiyonu
+    if(muteBtn) {
+        muteBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (!player) return;
+
+            if (player.isMuted()) {
+                player.unMute();
+                muteIcon.className = "fa-solid fa-volume-high";
+                muteBtn.classList.remove('border-red-600/40', 'text-red-500');
+                statusText.innerText = "LIVE AUDIO // VOL 50%";
+                bars.forEach(bar => bar.style.opacity = "1");
+            } else {
+                player.mute();
+                muteIcon.className = "fa-solid fa-volume-xmark text-red-500";
+                muteBtn.classList.add('border-red-600/40');
+                statusText.innerText = "LIVE AUDIO // MUTED";
+                bars.forEach(bar => bar.style.opacity = "0.2");
+            }
+        });
+    }
+
+    // İlerletme / Sonraki Şarkı Fonksiyonu
+    if(nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (player && typeof player.nextVideo === 'function') {
+                player.nextVideo(); // Eğer bir playlist bağladıysan listedeki bir sonraki videoya atlar knk
+                updateUI(true);
+            }
+        });
+    }
+
+    // Dinamik Arayüz Güncelleyici Motor
     function updateUI(isPlaying) {
         if(isPlaying) {
-            icon.className = "fa-solid fa-pause";
-            toggleBtn.className = "w-6 h-6 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 transition-all duration-300 text-[10px] cursor-pointer";
+            musicIcon.className = "fa-solid fa-pause";
+            toggleBtn.className = "w-7 h-7 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] cursor-pointer transition-all";
             bars.forEach(bar => bar.style.display = "block");
+            if(!player.isMuted()) statusText.innerText = "LIVE AUDIO // VOL 50%";
         } else {
-            icon.className = "fa-solid fa-play";
-            toggleBtn.className = "w-6 h-6 rounded-lg bg-red-950/40 border border-red-600/40 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white transition-all duration-300 text-[10px] cursor-pointer";
+            musicIcon.className = "fa-solid fa-play";
+            toggleBtn.className = "w-7 h-7 rounded-lg bg-red-950/40 border border-red-600/40 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white text-[10px] cursor-pointer transition-all";
             bars.forEach(bar => bar.style.display = "none");
+            statusText.innerText = "LIVE AUDIO // PAUSED";
         }
     }
 </script>
