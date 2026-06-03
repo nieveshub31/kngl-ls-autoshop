@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 
 <style>
-    /* %100 KORUMA: Tarayıcı açıldığı an ekranı simsiyah yapar, ham kodları gizler */
-    #minimal-cyber-loader {
+    /* KORUMA KATMANI: Çıplak kod sızıntısını ve parlamaları %100 engeller */
+    #premium-ignition-loader {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        background-color: #050505 !important; /* Derin yeraltı siyahı */
+        background-color: #070707 !important; /* Derin karbon siyahı */
         z-index: 9999999 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-        transition: opacity 0.8s ease-in-out, visibility 0.8s !important;
+        font-family: 'Courier New', Courier, monospace !important;
+        transition: opacity 0.6s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.6s ease-in-out !important;
         opacity: 1;
         visibility: visible;
     }
-    .loader-stop-scroll {
+    .ignition-lock {
         overflow: hidden !important;
         height: 100vh !important;
     }
 
-    /* LOGO TASARIMI VE NEFES ALMA ANİMASYONU */
-    .minimal-logo {
-        color: #ffffff !important;
-        font-size: 48px !important;
+    /* MATRİS VE RADAR KATMANLARI */
+    .ign-grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.02;
+        background-image: linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+    }
+    .ign-glow {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(220, 38, 38, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    /* PREMIUM SİBER PANEL VE ÇERÇEVE */
+    .cyber-panel-frame {
+        position: relative;
+        padding: 40px 60px;
+        background: rgba(13, 13, 13, 0.9);
+        border: 1px solid rgba(220, 38, 38, 0.2);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(220, 38, 38, 0.05);
+        /* Fütüristik asimetrik köşe kesimi */
+        clip-path: polygon(0 0, 92% 0, 100% 15%, 100% 100%, 8% 100%, 0 85%);
+    }
+
+    /* KESİŞEN KIRMIZI SİBER IŞIK SÜZMESİ (LAZERLER) */
+    .cyber-panel-frame::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #dc2626, transparent);
+        animation: topLaserRun 3s linear infinite;
+    }
+
+    /* DIJITAL SVE AKICI LOGO YAZISI */
+    .ign-logo-text {
+        font-size: 52px !important;
         font-weight: 900 !important;
-        letter-spacing: 16px !important;
+        letter-spacing: 14px !important;
         text-transform: uppercase !important;
         margin: 0 !important;
         padding: 0 !important;
         text-align: center !important;
-        /* Hafif ve kaliteli kırmızı neon aurası */
-        text-shadow: 0 0 20px rgba(220, 38, 38, 0.6) !important;
-        animation: logoPulse 2.5s ease-in-out infinite alternate !important;
-        opacity: 0;
+        
+        /* Işık akış efekti (Metnin içinden kırmızı neon dalgası geçer) */
+        background: linear-gradient(90deg, #333333, #ffffff 45%, #dc2626 50%, #ffffff 55%, #333333);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: lightFlow 3.5s linear infinite !important;
+        filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.5));
     }
 
-    @keyframes logoPulse {
-        0% {
-            opacity: 0.1;
-            transform: scale(0.98);
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
-        }
-        100% {
-            opacity: 1;
-            transform: scale(1);
-            text-shadow: 0 0 25px rgba(220, 38, 38, 0.8), 0 0 50px rgba(220, 38, 38, 0.4);
-        }
+    .ign-sub {
+        color: rgba(220, 38, 38, 0.6);
+        font-size: 9px;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+        text-align: center;
+        margin-top: 12px;
+        font-weight: bold;
+        opacity: 0.8;
+        animation: subPulse 1.8s ease-in-out infinite alternate;
+    }
+
+    /* ANİMASYON MOTORLARI */
+    @keyframes topLaserRun {
+        0% { top: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+    @keyframes lightFlow {
+        0% { background-position: 200% center; }
+        100% { background-position: -200% center; }
+    }
+    @keyframes subPulse {
+        0% { opacity: 0.4; text-shadow: 0 0 2px rgba(220,38,38,0.2); }
+        100% { opacity: 1; text-shadow: 0 0 8px rgba(220,38,38,0.6); }
     }
 </style>
 
-<div id="minimal-cyber-loader">
-    <h1 class="minimal-logo">LS GARAGE</h1>
+<div id="premium-ignition-loader">
+    <div class="ign-grid"></div>
+    <div class="ign-glow"></div>
+
+    <div class="cyber-panel-frame">
+        <h1 class="ign-logo-text">LS GARAGE</h1>
+        <div class="ign-sub">PERFORMANCE // LAB</div>
+    </div>
 </div>
 
 <script>
-    // Sayfa yüklenirken arkadaki ana sitenin kaymasını kilitler
-    document.documentElement.classList.add('loader-stop-scroll');
+    // Tarayıcı ilk satırda sayfayı kilitler
+    document.documentElement.classList.add('ignition-lock');
 
     document.addEventListener("DOMContentLoaded", function() {
-        const loader = document.getElementById('minimal-cyber-loader');
+        const loader = document.getElementById('premium-ignition-loader');
         
-        // 2 saniye sonra loader pürüzsüzce silinmeye başlar
         setTimeout(function() {
             if(loader) {
+                // Sinematik yok oluş efekti (Hafifçe büyüyerek flulaşır)
                 loader.style.opacity = "0";
-                loader.style.visibility = "hidden";
-                document.documentElement.classList.remove('loader-stop-scroll');
+                loader.style.transform = "scale(1.05)";
+                document.documentElement.classList.remove('ignition-lock');
                 
-                // Animasyon bitince arka planda tamamen kaldırır
                 setTimeout(() => {
                     loader.style.display = "none";
-                }, 800);
+                }, 600);
             }
-        }, 2000); // Ekranda kalma süresi (2 saniye)
+        }, 2400); // Ekranda kalma süresi (2.4 Saniye)
     });
 </script>
-
-
-<html lang="tr" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KNGL-LS AutoShop | Mirror Park </title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Plus+Jakarta+Sans:wght=200;400;600;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
 
         
         :root { --accent: #ff0000; --bg: #050505; --card: #0c0c0c; --border: #1a1a1a; }
