@@ -1150,35 +1150,27 @@
 <!-- GELİŞMİŞ BAĞIMSIZ SOL ÜST SİBER YOUTUBE MUSIC PLAYER -->
 <!-- ================================================================= -->
 <div id="siber-player" class="fixed top-4 left-4 z-[9999] select-none pointer-events-auto">
-    <div class="flex items-center space-x-2 bg-neutral-950/95 border border-red-600/30 px-3 py-2 rounded-xl shadow-[0_0_25px_rgba(220,38,38,0.25)] backdrop-blur-md">
+    <div class="flex items-center space-x-3 bg-neutral-950/95 border border-red-600/30 px-3 py-2 rounded-xl shadow-[0_0_25px_rgba(220,38,38,0.25)] backdrop-blur-md">
         
         <div id="yt-placeholder" class="hidden"></div>
 
-        <div class="flex items-center space-x-1">
+        <div class="flex items-center space-x-1.5">
             
-            <button id="volDownBtn" class="w-5 h-5 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="Sesi Kıs">
+            <button id="volDownBtn" class="w-6 h-6 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="Sesi Kıs">
                 <i class="fa-solid fa-volume-minus"></i>
             </button>
 
-            <button id="seekBackBtn" class="w-5 h-5 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="10 Sn Geri">
-                <i class="fa-solid fa-backward-step"></i>
-            </button>
-
-            <button id="musicToggleBtn" class="w-7 h-7 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] cursor-pointer transition-all" title="Oynat/Durdur">
+            <button id="musicToggleBtn" class="w-8 h-8 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[11px] cursor-pointer transition-all" title="Oynat/Durdur">
                 <i id="musicIcon" class="fa-solid fa-pause"></i>
             </button>
 
-            <button id="seekForwardBtn" class="w-5 h-5 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="10 Sn İleri">
-                <i class="fa-solid fa-forward-step"></i>
-            </button>
-
-            <button id="volUpBtn" class="w-5 h-5 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="Sesi Aç">
+            <button id="volUpBtn" class="w-6 h-6 rounded-md bg-neutral-900 border border-white/5 text-gray-400 hover:text-white hover:border-white/20 flex items-center justify-center text-[9px] cursor-pointer transition-all" title="Sesi Aç">
                 <i class="fa-solid fa-volume-plus"></i>
             </button>
             
         </div>
 
-        <div class="h-6 w-[1px] bg-white/10 mx-1"></div>
+        <div class="h-6 w-[1px] bg-white/10 mx-0.5"></div>
 
         <div class="flex flex-col justify-center w-28 overflow-hidden">
             <span id="audioStatusText" class="text-red-600 text-[7px] font-mono font-black tracking-widest block leading-none mb-0.5">LIVE AUDIO // VOL 50%</span>
@@ -1205,17 +1197,16 @@
 </style>
 
 <script>
-    // 1. YouTube Iframe API Yükleme
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     var player;
-    var currentVolume = 50; // Başlangıç ses seviyesi %50
+    var currentVolume = 50; // İlk giriş ses seviyesi %50
     
     // 🛠️ BURADAKİ VIDEO ID'SİNİ KENDİ ŞARKININ LİNKİNDEKİ ID İLE DEĞİŞTİR KNK
-    var youtubeVideoId = "dQw4w9WgXcQ"; 
+    var youtubeVideoId = "KGeY5ZW42-M"; 
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('yt-placeholder', {
@@ -1251,17 +1242,14 @@
         }
     }
 
-    // Buton Elementleri Tanımlamaları
     const toggleBtn = document.getElementById('musicToggleBtn');
     const musicIcon = document.getElementById('musicIcon');
     const volUpBtn = document.getElementById('volUpBtn');
     const volDownBtn = document.getElementById('volDownBtn');
-    const seekForwardBtn = document.getElementById('seekForwardBtn');
-    const seekBackBtn = document.getElementById('seekBackBtn');
     const statusText = document.getElementById('audioStatusText');
     const bars = document.querySelectorAll('.audio-bar');
 
-    // 1. OYNAT / DURDUR MOTORU
+    // OYNAT / DURDUR
     if(toggleBtn) {
         toggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -1277,7 +1265,7 @@
         });
     }
 
-    // 2. SESİ AÇMA BUTONU (Her basışta %10 arttırır)
+    // SESİ AÇMA (Her basışta %10 arttırır)
     if(volUpBtn) {
         volUpBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -1290,7 +1278,7 @@
         });
     }
 
-    // 3. SESİ KISMA BUTONU (Her basışta %10 azaltır)
+    // SESİ KISMA (Her basışta %10 azaltır)
     if(volDownBtn) {
         volDownBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -1303,36 +1291,15 @@
         });
     }
 
-    // 4. İLERİ SARMA MOTORU (+10 Saniye İleri Atar)
-    if(seekForwardBtn) {
-        seekForwardBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (!player) return;
-            var currentTime = player.getCurrentTime();
-            player.seekTo(currentTime + 10, true);
-        });
-    }
-
-    // 5. GERİ SARMA MOTORU (-10 Saniye Geri Atar)
-    if(seekBackBtn) {
-        seekBackBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            if (!player) return;
-            var currentTime = player.getCurrentTime();
-            player.seekTo(Math.max(0, currentTime - 10), true);
-        });
-    }
-
-    // Arayüz Güncelleyici
     function updateUI(isPlaying) {
         if(isPlaying) {
             musicIcon.className = "fa-solid fa-pause";
-            toggleBtn.className = "w-7 h-7 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[10px] cursor-pointer transition-all";
+            toggleBtn.className = "w-8 h-8 rounded-lg bg-red-600 text-white shadow-[0_0_10px_rgba(220,38,38,0.4)] flex items-center justify-center hover:bg-red-700 text-[11px] cursor-pointer transition-all";
             bars.forEach(bar => bar.style.display = "block");
             statusText.innerText = "LIVE AUDIO // VOL " + currentVolume + "%";
         } else {
             musicIcon.className = "fa-solid fa-play";
-            toggleBtn.className = "w-7 h-7 rounded-lg bg-red-950/40 border border-red-600/40 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white text-[10px] cursor-pointer transition-all";
+            toggleBtn.className = "w-8 h-8 rounded-lg bg-red-950/40 border border-red-600/40 flex items-center justify-center text-red-500 hover:bg-red-600 hover:text-white text-[11px] cursor-pointer transition-all";
             bars.forEach(bar => bar.style.display = "none");
             statusText.innerText = "LIVE AUDIO // PAUSED";
         }
