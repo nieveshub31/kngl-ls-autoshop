@@ -1,250 +1,82 @@
 <!DOCTYPE html>
 
 <style>
-    #premium-cyber-loader {
+    /* %100 KORUMA: Tarayıcı açıldığı an ekranı simsiyah yapar, ham kodları gizler */
+    #minimal-cyber-loader {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         width: 100% !important;
         height: 100% !important;
-        background-color: #050505 !important; /* Tam karanlık yeraltı arka planı */
+        background-color: #050505 !important; /* Derin yeraltı siyahı */
         z-index: 9999999 !important;
         display: flex !important;
-        flex-direction: column !important;
         align-items: center !important;
         justify-content: center !important;
-        font-family: 'Courier New', Courier, monospace !important;
-        transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1) !important;
-        opacity: 1 !important;
-        visibility: visible !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        transition: opacity 0.8s ease-in-out, visibility 0.8s !important;
+        opacity: 1;
+        visibility: visible;
     }
-    .loader-lock {
+    .loader-stop-scroll {
         overflow: hidden !important;
         height: 100vh !important;
     }
-</style>
 
-<div id="premium-cyber-loader">
-    
-    <div class="cyber-radar-pulse"></div>
-    <div class="cyber-laser-line"></div>
-    <div class="cyber-grid-overlay"></div>
-
-    <div class="cyber-hud-container">
-        
-        <div class="hud-corner top-left"></div>
-        <div class="hud-corner top-right"></div>
-        <div class="hud-corner bottom-left"></div>
-        <div class="hud-corner bottom-right"></div>
-
-        <div class="hud-header-data">
-            <span>SECURE_LINK // ACTIVE</span>
-            <span>LOC: ANTALYA_LAB</span>
-        </div>
-
-        <div class="cyber-logo-wrapper">
-            <h1 class="matrix-glow-text">LS GARAGE</h1>
-            <div class="logo-sub-bar">PERFORMANCE & TUNING LAB</div>
-        </div>
-
-        <div class="matrix-progress-container">
-            <div class="matrix-progress-bar"></div>
-        </div>
-        
-        <div class="cyber-status-box">
-            <span class="status-dot"></span>
-            <span class="status-text">INITIALIZING ECU_TUNING_SYSTEM...</span>
-        </div>
-
-    </div>
-</div>
-
-<style>
-    /* Izgara Deseni */
-    .cyber-grid-overlay {
-        position: absolute;
-        inset: 0;
-        opacity: 0.03;
-        background-image: linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px);
-        background-size: 25px 25px;
-        pointer-events: none;
-    }
-
-    /* Kırmızı Lazer Tarama Çizgisi */
-    .cyber-laser-line {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(to right, transparent, #dc2626, #ff1e1e, #dc2626, transparent);
-        box-shadow: 0 0 15px #ff1e1e, 0 0 30px #dc2626;
-        opacity: 0.4;
-        animation: laserScan 4s linear infinite;
-        pointer-events: none;
-    }
-
-    /* Radar Nabız Efekti */
-    .cyber-radar-pulse {
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        border: 1px solid rgba(220, 38, 38, 0.15);
-        border-radius: 50%;
-        box-shadow: 0 0 40px rgba(220, 38, 38, 0.05) inset;
-        animation: radarPulse 3s ease-out infinite;
-        pointer-events: none;
-    }
-
-    /* HUD Kapsayıcı Tasarımı */
-    .cyber-hud-container {
-        position: relative;
-        padding: 50px 70px;
-        background: rgba(10, 10, 10, 0.85);
-        border: 1px solid rgba(255, 255, 255, 0.03);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 4px;
-    }
-
-    /* HUD Köşe Çentikleri */
-    .hud-corner {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        border: 2px solid transparent;
-    }
-    .top-left { top: 0; left: 0; border-top-color: #dc2626; border-l-color: #dc2626; }
-    .top-right { top: 0; right: 0; border-top-color: #dc2626; border-r-color: #dc2626; }
-    .bottom-left { bottom: 0; left: 0; border-bottom-color: #dc2626; border-l-color: #dc2626; }
-    .bottom-right { bottom: 0; right: 0; border-bottom-color: #dc2626; border-r-color: #dc2626; }
-
-    .hud-header-data {
-        position: absolute;
-        top: 8px;
-        left: 20px;
-        right: 20px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 8px;
-        color: rgba(255, 255, 255, 0.3);
-        letter-spacing: 2px;
-    }
-
-    /* Yeni Dijital Logo Tasarımı */
-    .cyber-logo-wrapper {
-        text-align: center;
-        margin-bottom: 25px;
-    }
-    .matrix-glow-text {
+    /* LOGO TASARIMI VE NEFES ALMA ANİMASYONU */
+    .minimal-logo {
         color: #ffffff !important;
-        font-size: 55px !important;
+        font-size: 48px !important;
         font-weight: 900 !important;
-        letter-spacing: 12px !important;
+        letter-spacing: 16px !important;
+        text-transform: uppercase !important;
         margin: 0 !important;
         padding: 0 !important;
-        text-transform: uppercase !important;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px #dc2626, 0 0 40px #dc2626 !important;
-        animation: textCyberBreathe 3s ease-in-out infinite;
-    }
-    .logo-sub-bar {
-        color: #a3a3a3;
-        font-size: 10px;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        margin-top: 8px;
-        opacity: 0.8;
+        text-align: center !important;
+        /* Hafif ve kaliteli kırmızı neon aurası */
+        text-shadow: 0 0 20px rgba(220, 38, 38, 0.6) !important;
+        animation: logoPulse 2.5s ease-in-out infinite alternate !important;
+        opacity: 0;
     }
 
-    /* Bölmeli Dijital İlerleme Çubuğu */
-    .matrix-progress-container {
-        width: 240px;
-        height: 5px;
-        background: #171717;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 2px;
-        padding: 1px;
-        overflow: hidden;
-        position: relative;
-    }
-    .matrix-progress-bar {
-        height: 100%;
-        background: #dc2626;
-        box-shadow: 0 0 10px #ff1e1e;
-        width: 0;
-        border-radius: 1px;
-        animation: matrixProgressRun 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    /* Durum Kutusu ve Noktası */
-    .cyber-status-box {
-        display: flex;
-        align-items: center;
-        margin-top: 15px;
-    }
-    .status-dot {
-        width: 4px;
-        height: 4px;
-        background-color: #dc2626;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #ff1e1e;
-        margin-right: 8px;
-        animation: dotFlash 0.8s infinite;
-    }
-    .status-text {
-        color: #dc2626;
-        font-size: 8px;
-        letter-spacing: 2px;
-        font-weight: bold;
-        opacity: 0.7;
-    }
-
-    /* KEYFRAMES ANIMASYON MOTORLARI */
-    @keyframes laserScan {
-        0% { top: 0%; }
-        50% { top: 100%; }
-        100% { top: 0%; }
-    }
-    @keyframes radarPulse {
-        0% { transform: scale(0.6); opacity: 0.8; }
-        100% { transform: scale(1.4); opacity: 0; }
-    }
-    @keyframes textCyberBreathe {
-        0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px #dc2626, 0 0 40px #dc2626; }
-        50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px #ff1e1e, 0 0 60px #ff1e1e; transform: scale(1.02); }
-    }
-    @keyframes matrixProgressRun {
-        0% { width: 0%; }
-        50% { width: 80%; }
-        100% { width: 100%; }
-    }
-    @keyframes dotFlash {
-        0%, 100% { opacity: 02; }
-        50% { opacity: 1; }
+    @keyframes logoPulse {
+        0% {
+            opacity: 0.1;
+            transform: scale(0.98);
+            text-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+            text-shadow: 0 0 25px rgba(220, 38, 38, 0.8), 0 0 50px rgba(220, 38, 38, 0.4);
+        }
     }
 </style>
 
+<div id="minimal-cyber-loader">
+    <h1 class="minimal-logo">LS GARAGE</h1>
+</div>
+
 <script>
-    // Tarayıcı bu satıra ulaştığı an sayfayı kilitler (Kaydırmayı ve sızıntıyı önler)
-    document.documentElement.classList.add('loader-lock');
+    // Sayfa yüklenirken arkadaki ana sitenin kaymasını kilitler
+    document.documentElement.classList.add('loader-stop-scroll');
 
     document.addEventListener("DOMContentLoaded", function() {
-        const cyberLoader = document.getElementById('premium-cyber-loader');
+        const loader = document.getElementById('minimal-cyber-loader');
         
-        // Sistem yüklemesi simülasyonu bittiğinde pürüzsüz geçiş
+        // 2 saniye sonra loader pürüzsüzce silinmeye başlar
         setTimeout(function() {
-            if(cyberLoader) {
-                // Ekranı yukarı fırlatır
-                cyberLoader.style.transform = "translateY(-100%)";
-                document.documentElement.classList.remove('loader-lock');
+            if(loader) {
+                loader.style.opacity = "0";
+                loader.style.visibility = "hidden";
+                document.documentElement.classList.remove('loader-stop-scroll');
                 
-                // Arka planda tamamen yok et
+                // Animasyon bitince arka planda tamamen kaldırır
                 setTimeout(() => {
-                    cyberLoader.style.display = "none";
+                    loader.style.display = "none";
                 }, 800);
             }
-        }, 2500); // Ekranda kalma süresi (2.5 Saniye)
+        }, 2000); // Ekranda kalma süresi (2 saniye)
     });
 </script>
 
