@@ -2,86 +2,121 @@
 
 <div id="cyber-loader" class="fixed inset-0 bg-neutral-950 z-[100000] flex flex-col items-center justify-center select-none transition-transform duration-700 ease-in-out">
     
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.05),transparent_65%)] pointer-events-none"></div>
-    
-    <div class="absolute inset-0 pointer-events-none opacity-30 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.07),transparent_60%)] pointer-events-none"></div>
+    <div class="absolute inset-0 pointer-events-none opacity-[0.25] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.6)_50%)] bg-[length:100%_4px]"></div>
+    <div class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[length:20px_20px] pointer-events-none"></div>
 
-    <div class="relative flex flex-col items-center group">
+    <div class="relative p-10 flex flex-col items-center justify-center">
         
-        <h1 class="cyber-glitch-text heading-font text-white text-5xl font-black tracking-widest uppercase relative" data-text="LS GARAGE">
-            LS GARAGE
-        </h1>
+        <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-red-600/60 rounded-tl-sm"></div>
+        <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-red-600/60 rounded-tr-sm"></div>
+        <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-red-600/60 rounded-bl-sm"></div>
+        <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-red-600/60 rounded-br-sm"></div>
 
-        <div class="w-48 h-[2px] bg-neutral-900 border border-white/5 rounded-full mt-6 overflow-hidden relative shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-            <div class="h-full bg-red-600 shadow-[0_0_10px_#dc2626] animate-[loaderBar_2.2s_ease-in-out_infinite] w-0"></div>
+        <div class="absolute top-2 left-8 right-8 flex justify-between items-center opacity-40 font-mono text-[7px] text-gray-500 tracking-widest">
+            <span>SYS_LOC: MİRROR PARK.</span>
+            <span>CORE_v2.026</span>
+        </div>
+
+        <div class="relative py-4 px-6 my-2">
+            <h1 class="cyber-premium-glitch heading-font text-white text-6xl font-black tracking-[0.25em] uppercase relative text-center filter drop-shadow-[0_0_20px_rgba(220,38,38,0.6)]" data-text="LS GARAGE">
+                LS AUTOSHOP
+            </h1>
+        </div>
+
+        <span class="text-gray-400 font-mono text-[9px] tracking-[0.5em] uppercase block font-medium mt-1 mb-6 text-center opacity-80">
+            PERFORMANCE & TUNING LAB
+        </span>
+
+        <div class="w-64 h-4 bg-neutral-900/90 border border-red-600/20 rounded-md p-0.5 overflow-hidden relative shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center">
+            <div class="h-full bg-gradient-to-r from-red-800 to-red-600 shadow-[0_0_15px_#dc2626] animate-[cyberProgress_2.5s_ease-in-out_infinite] rounded-[3px] relative">
+                <div class="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,#000_25%,transparent_25%,transparent_50%,#000_50%,#000_75%,transparent_75%,transparent)] bg-[length:8px_8px]"></div>
+            </div>
         </div>
         
-        <span class="text-red-600 font-mono text-[8px] tracking-[0.4em] uppercase block mt-3 font-black opacity-60 animate-pulse">
-            INITIALIZING SYSTEM...
-        </span>
+        <div class="flex items-center space-x-1 mt-3">
+            <span class="text-red-600 font-mono text-[8px] tracking-[0.3em] uppercase font-black opacity-70">
+                ESTABLISHING SECURE CONNECTION
+            </span>
+            <span class="w-1.5 h-3 bg-red-600 animate-[cyberBlink_0.8s_infinite] shadow-[0_0_8px_#dc2626]"></span>
+        </div>
+
+        <div class="absolute -bottom-6 opacity-20 font-mono text-[6px] text-gray-600 tracking-widest text-center">
+            ||||| | |||| ||| || |||| ||||| | || 03022003
+        </div>
     </div>
 </div>
 
 <style>
-    /* Sayfanın ilk açılışta loader kalkana kadar arkaya doğru kaymasını önler */
+    /* Sayfa kilitlenme önlemi */
     html, body {
         overflow-x: hidden;
     }
 
-    /* Yükleme Çubuğu Animasyonu */
-    @keyframes loaderBar {
+    /* İmleç Yanıp Sönme Mekanizması */
+    @keyframes cyberBlink {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+    }
+
+    /* Gelişmiş Hücresel İlerleme Çubuğu Animasyonu */
+    @keyframes cyberProgress {
         0% { width: 0%; left: 0%; }
-        50% { width: 70%; left: 15%; }
+        45% { width: 55%; left: 10%; }
+        70% { width: 20%; left: 65%; }
         100% { width: 100%; left: 0%; }
     }
 
-    /* Siber Glitch Efekt Mekanizması */
-    .cyber-glitch-text {
-        text-shadow: 0.05em 0 0 rgba(225, 0, 0, 0.75),
-                     -0.025em -0.05em 0 rgba(0, 225, 0, 0.75),
-                     0.025em 0.05em 0 rgba(0, 0, 225, 0.75);
-        animation: glitch 1s infinite;
+    /* Ağır ve Kaliteli Siber Glitch Efekti */
+    .cyber-premium-glitch {
+        animation: mainGlitch 3.5s infinite steps(2);
     }
 
-    .cyber-glitch-text::before,
-    .cyber-glitch-text::after {
+    .cyber-premium-glitch::before,
+    .cyber-premium-glitch::after {
         content: attr(data-text);
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
         background: #0a0a0a;
+        opacity: 0.9;
     }
 
-    .cyber-glitch-text::before {
-        left: 2px;
-        text-shadow: -2px 0 #ff0000;
-        clip: rect(44px, 450px, 56px, 0);
-        animation: glitch-anim 5s infinite linear alternate-reverse;
+    .cyber-premium-glitch::before {
+        left: 3px;
+        text-shadow: -3px 0 #ff0055;
+        clip: rect(10px, 600px, 30px, 0);
+        animation: glitchLayer1 2s infinite linear alternate-reverse;
     }
 
-    .cyber-glitch-text::after {
-        left: -2px;
-        text-shadow: -2px 0 #00ff00, 0 2px #0000ff;
-        clip: rect(85px, 450px, 140px, 0);
-        animation: glitch-anim2 5s infinite linear alternate-reverse;
+    .cyber-premium-glitch::after {
+        left: -3px;
+        text-shadow: -2px 0 #00ffcc, 0 3px #ff0055;
+        clip: rect(45px, 600px, 75px, 0);
+        animation: glitchLayer2 2.5s infinite linear alternate-reverse;
     }
 
-    @keyframes glitch {
-        0% { text-shadow: 1px 0 0 #ff0000, -1px 0 0 #0000ff; }
-        49% { text-shadow: 1px 0 0 #ff0000, -1px 0 0 #0000ff; }
-        50% { text-shadow: 3px 2px 0 #ff0000, -3px -1px 0 #0000ff; }
-        55% { text-shadow: -1px -2px 0 #ff0000, 2px 3px 0 #0000ff; }
-        56% { text-shadow: 1px 0 0 #ff0000, -1px 0 0 #0000ff; }
-        100% { text-shadow: 1px 0 0 #ff0000, -1px 0 0 #0000ff; }
+    @keyframes mainGlitch {
+        0%, 90%, 100% { text-shadow: 2px 0 0 rgba(255,0,0,0.4), -2px 0 0 rgba(0,0,255,0.4); transform: skew(0deg); }
+        92% { text-shadow: 4px 3px 0 #ff0055, -4px -2px 0 #00ffcc; transform: skew(2deg); }
+        94% { text-shadow: -3px -4px 0 #ff0055, 3px 4px 0 #0000ff; transform: skew(-3deg); }
+        96% { text-shadow: 2px -2px 0 #ff0055, -2px 2px 0 #00ffcc; transform: skew(1deg); }
     }
 
-    @keyframes glitch-anim {
-        0% { clip: rect(15px, 9999px, 66px, 0); transform: skew(0.3deg); }
-        100% { clip: rect(34px, 9999px, 55px, 0); transform: skew(0.8deg); }
+    @keyframes glitchLayer1 {
+        0% { clip: rect(20px, 9999px, 40px, 0); }
+        20% { clip: rect(65px, 9999px, 15px, 0); }
+        40% { clip: rect(5px, 9999px, 80px, 0); }
+        60% { clip: rect(90px, 9999px, 110px, 0); }
+        80% { clip: rect(35px, 9999px, 60px, 0); }
+        100% { clip: rect(12px, 9999px, 95px, 0); }
     }
 
-    @keyframes glitch-anim2 {
-        0% { clip: rect(70px, 9999px, 105px, 0); transform: skew(-0.5deg); }
-        100% { clip: rect(12px, 9999px, 85px, 0); transform: skew(0.2deg); }
+    @keyframes glitchLayer2 {
+        0% { clip: rect(70px, 9999px, 105px, 0); }
+        25% { clip: rect(15px, 9999px, 55px, 0); }
+        50% { clip: rect(85px, 9999px, 130px, 0); }
+        75% { clip: rect(30px, 9999px, 75px, 0); }
+        100% { clip: rect(5px, 9999px, 45px, 0); }
     }
 </style>
 
@@ -91,19 +126,16 @@
         
         setTimeout(function() {
             if(loader) {
-                // Ekranı yukarı doğru kaydırarak pürüzsüzce kaldırır
+                // Ekranı yukarı fırlatarak açar
                 loader.style.transform = "translateY(-100%)";
                 
                 setTimeout(() => {
                     loader.style.display = "none";
                 }, 700);
             }
-        }, 2200); // Ekranın kalma süresi (2.2 saniye)
+        }, 2600); // 2.6 saniye sonra sistem açılır knk
     });
 </script>
-
-
-
 
 
 <html lang="tr" class="scroll-smooth">
