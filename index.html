@@ -1,102 +1,250 @@
 <!DOCTYPE html>
 
 <style>
-    #cyber-loader {
-        opacity: 0;
-        pointer-events: none;
+    #premium-cyber-loader {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background-color: #050505 !important; /* Tam karanlık yeraltı arka planı */
+        z-index: 9999999 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-family: 'Courier New', Courier, monospace !important;
+        transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1) !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
-    /* Sayfa ilk yüklendiğinde loader'ın çat diye en üstte kilitli kalmasını sağlar */
-    .loader-active {
+    .loader-lock {
         overflow: hidden !important;
+        height: 100vh !important;
     }
 </style>
 
-<div id="cyber-loader" class="fixed inset-0 bg-neutral-950 z-[100000] flex flex-col items-center justify-center select-none transition-all duration-700 ease-in-out opacity-100" style="opacity: 1 !important; pointer-events: auto !important;">
+<div id="premium-cyber-loader">
     
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.07),transparent_60%)] pointer-events-none"></div>
-    <div class="absolute inset-0 pointer-events-none opacity-[0.25] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.6)_50%)] bg-[length:100%_4px]"></div>
-    <div class="absolute inset-0 opacity-[0.02] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[length:20px_20px] pointer-events-none"></div>
+    <div class="cyber-radar-pulse"></div>
+    <div class="cyber-laser-line"></div>
+    <div class="cyber-grid-overlay"></div>
 
-    <div class="relative p-10 flex flex-col items-center justify-center">
+    <div class="cyber-hud-container">
         
-        <div class="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-red-600/60 rounded-tl-sm"></div>
-        <div class="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-red-600/60 rounded-tr-sm"></div>
-        <div class="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-red-600/60 rounded-bl-sm"></div>
-        <div class="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-red-600/60 rounded-br-sm"></div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
 
-        <div class="absolute top-2 left-8 right-8 flex justify-between items-center opacity-40 font-mono text-[7px] text-gray-500 tracking-widest">
-            <span>SYS_LOC: MİRROR-PARK</span>
-            <span>CORE_v2.026</span>
+        <div class="hud-header-data">
+            <span>SECURE_LINK // ACTIVE</span>
+            <span>LOC: ANTALYA_LAB</span>
         </div>
 
-        <div class="relative py-4 px-6 my-2">
-            <h1 class="cyber-premium-glitch heading-font text-white text-6xl font-black tracking-[0.25em] uppercase relative text-center filter drop-shadow-[0_0_20px_rgba(220,38,38,0.6)]" data-text="YER6">
-                LS AUTOSHOP
-            </h1>
+        <div class="cyber-logo-wrapper">
+            <h1 class="matrix-glow-text">LS GARAGE</h1>
+            <div class="logo-sub-bar">PERFORMANCE & TUNING LAB</div>
         </div>
 
-        <span class="text-gray-400 font-mono text-[9px] tracking-[0.5em] uppercase block font-medium mt-1 mb-6 text-center opacity-80">
-            PERFORMANCE & TUNING LAB
-        </span>
-
-        <div class="w-64 h-4 bg-neutral-900/90 border border-red-600/20 rounded-md p-0.5 overflow-hidden relative shadow-[0_0_20px_rgba(0,0,0,0.8)] flex items-center">
-            <div class="h-full bg-gradient-to-r from-red-800 to-red-600 shadow-[0_0_15px_#dc2626] animate-[cyberProgress_2.5s_ease-in-out_infinite] rounded-[3px] relative">
-                <div class="absolute inset-0 opacity-20 bg-[linear-gradient(45deg,#000_25%,transparent_25%,transparent_50%,#000_50%,#000_75%,transparent_75%,transparent)] bg-[length:8px_8px]"></div>
-            </div>
+        <div class="matrix-progress-container">
+            <div class="matrix-progress-bar"></div>
         </div>
         
-        <div class="flex items-center space-x-1 mt-3">
-            <span class="text-red-600 font-mono text-[8px] tracking-[0.3em] uppercase font-black opacity-70">
-                ESTABLISHING SECURE CONNECTION
-            </span>
-            <span class="w-1.5 h-3 bg-red-600 animate-[cyberBlink_0.8s_infinite] shadow-[0_0_8px_#dc2626]"></span>
+        <div class="cyber-status-box">
+            <span class="status-dot"></span>
+            <span class="status-text">INITIALIZING ECU_TUNING_SYSTEM...</span>
         </div>
 
-        <div class="absolute -bottom-6 opacity-20 font-mono text-[6px] text-gray-600 tracking-widest text-center">
-            ||||| | |||| ||| || |||| ||||| | || 03022003
-        </div>
     </div>
 </div>
 
 <style>
-    @keyframes cyberBlink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
-    @keyframes cyberProgress { 0% { width: 0%; left: 0%; } 45% { width: 55%; left: 10%; } 70% { width: 20%; left: 65%; } 100% { width: 100%; left: 0%; } }
-    
-    .cyber-premium-glitch { animation: mainGlitch 3.5s infinite steps(2); }
-    .cyber-premium-glitch::before, .cyber-premium-glitch::after {
-        content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; opacity: 0.9;
+    /* Izgara Deseni */
+    .cyber-grid-overlay {
+        position: absolute;
+        inset: 0;
+        opacity: 0.03;
+        background-image: linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px);
+        background-size: 25px 25px;
+        pointer-events: none;
     }
-    .cyber-premium-glitch::before { left: 3px; text-shadow: -3px 0 #ff0055; clip: rect(10px, 600px, 30px, 0); animation: glitchLayer1 2s infinite linear alternate-reverse; }
-    .cyber-premium-glitch::after { left: -3px; text-shadow: -2px 0 #00ffcc, 0 3px #ff0055; clip: rect(45px, 600px, 75px, 0); animation: glitchLayer2 2.5s infinite linear alternate-reverse; }
 
-    @keyframes mainGlitch {
-        0%, 90%, 100% { text-shadow: 2px 0 0 rgba(255,0,0,0.4), -2px 0 0 rgba(0,0,255,0.4); transform: skew(0deg); }
-        92% { text-shadow: 4px 3px 0 #ff0055, -4px -2px 0 #00ffcc; transform: skew(2deg); }
-        94% { text-shadow: -3px -4px 0 #ff0055, 3px 4px 0 #0000ff; transform: skew(-3deg); }
-        96% { text-shadow: 2px -2px 0 #ff0055, -2px 2px 0 #00ffcc; transform: skew(1deg); }
+    /* Kırmızı Lazer Tarama Çizgisi */
+    .cyber-laser-line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, transparent, #dc2626, #ff1e1e, #dc2626, transparent);
+        box-shadow: 0 0 15px #ff1e1e, 0 0 30px #dc2626;
+        opacity: 0.4;
+        animation: laserScan 4s linear infinite;
+        pointer-events: none;
     }
-    @keyframes glitchLayer1 { 0% { clip: rect(20px, 9999px, 40px, 0); } 20% { clip: rect(65px, 9999px, 15px, 0); } 40% { clip: rect(5px, 9999px, 80px, 0); } 60% { clip: rect(90px, 9999px, 110px, 0); } 80% { clip: rect(35px, 9999px, 60px, 0); } 100% { clip: rect(12px, 9999px, 95px, 0); } }
-    @keyframes glitchLayer2 { 0% { clip: rect(70px, 9999px, 105px, 0); } 25% { clip: rect(15px, 9999px, 55px, 0); } 50% { clip: rect(85px, 9999px, 130px, 0); } 75% { clip: rect(30px, 9999px, 75px, 0); } 100% { clip: rect(5px, 9999px, 45px, 0); } }
+
+    /* Radar Nabız Efekti */
+    .cyber-radar-pulse {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgba(220, 38, 38, 0.15);
+        border-radius: 50%;
+        box-shadow: 0 0 40px rgba(220, 38, 38, 0.05) inset;
+        animation: radarPulse 3s ease-out infinite;
+        pointer-events: none;
+    }
+
+    /* HUD Kapsayıcı Tasarımı */
+    .cyber-hud-container {
+        position: relative;
+        padding: 50px 70px;
+        background: rgba(10, 10, 10, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 4px;
+    }
+
+    /* HUD Köşe Çentikleri */
+    .hud-corner {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border: 2px solid transparent;
+    }
+    .top-left { top: 0; left: 0; border-top-color: #dc2626; border-l-color: #dc2626; }
+    .top-right { top: 0; right: 0; border-top-color: #dc2626; border-r-color: #dc2626; }
+    .bottom-left { bottom: 0; left: 0; border-bottom-color: #dc2626; border-l-color: #dc2626; }
+    .bottom-right { bottom: 0; right: 0; border-bottom-color: #dc2626; border-r-color: #dc2626; }
+
+    .hud-header-data {
+        position: absolute;
+        top: 8px;
+        left: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        color: rgba(255, 255, 255, 0.3);
+        letter-spacing: 2px;
+    }
+
+    /* Yeni Dijital Logo Tasarımı */
+    .cyber-logo-wrapper {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .matrix-glow-text {
+        color: #ffffff !important;
+        font-size: 55px !important;
+        font-weight: 900 !important;
+        letter-spacing: 12px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-transform: uppercase !important;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px #dc2626, 0 0 40px #dc2626 !important;
+        animation: textCyberBreathe 3s ease-in-out infinite;
+    }
+    .logo-sub-bar {
+        color: #a3a3a3;
+        font-size: 10px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        margin-top: 8px;
+        opacity: 0.8;
+    }
+
+    /* Bölmeli Dijital İlerleme Çubuğu */
+    .matrix-progress-container {
+        width: 240px;
+        height: 5px;
+        background: #171717;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2px;
+        padding: 1px;
+        overflow: hidden;
+        position: relative;
+    }
+    .matrix-progress-bar {
+        height: 100%;
+        background: #dc2626;
+        box-shadow: 0 0 10px #ff1e1e;
+        width: 0;
+        border-radius: 1px;
+        animation: matrixProgressRun 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Durum Kutusu ve Noktası */
+    .cyber-status-box {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .status-dot {
+        width: 4px;
+        height: 4px;
+        background-color: #dc2626;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #ff1e1e;
+        margin-right: 8px;
+        animation: dotFlash 0.8s infinite;
+    }
+    .status-text {
+        color: #dc2626;
+        font-size: 8px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        opacity: 0.7;
+    }
+
+    /* KEYFRAMES ANIMASYON MOTORLARI */
+    @keyframes laserScan {
+        0% { top: 0%; }
+        50% { top: 100%; }
+        100% { top: 0%; }
+    }
+    @keyframes radarPulse {
+        0% { transform: scale(0.6); opacity: 0.8; }
+        100% { transform: scale(1.4); opacity: 0; }
+    }
+    @keyframes textCyberBreathe {
+        0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 20px #dc2626, 0 0 40px #dc2626; }
+        50% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px #ff1e1e, 0 0 60px #ff1e1e; transform: scale(1.02); }
+    }
+    @keyframes matrixProgressRun {
+        0% { width: 0%; }
+        50% { width: 80%; }
+        100% { width: 100%; }
+    }
+    @keyframes dotFlash {
+        0%, 100% { opacity: 02; }
+        50% { opacity: 1; }
+    }
 </style>
 
 <script>
-    // Tarayıcı kodu okur okumaz sayfayı kilitler
-    document.documentElement.classList.add('loader-active');
+    // Tarayıcı bu satıra ulaştığı an sayfayı kilitler (Kaydırmayı ve sızıntıyı önler)
+    document.documentElement.classList.add('loader-lock');
 
     document.addEventListener("DOMContentLoaded", function() {
-        const loader = document.getElementById('cyber-loader');
+        const cyberLoader = document.getElementById('premium-cyber-loader');
         
-        // Sistem tamamen hazır olduğunda animasyonu başlatır
+        // Sistem yüklemesi simülasyonu bittiğinde pürüzsüz geçiş
         setTimeout(function() {
-            if(loader) {
-                loader.style.transform = "translateY(-100%)";
-                document.documentElement.classList.remove('loader-active');
+            if(cyberLoader) {
+                // Ekranı yukarı fırlatır
+                cyberLoader.style.transform = "translateY(-100%)";
+                document.documentElement.classList.remove('loader-lock');
                 
+                // Arka planda tamamen yok et
                 setTimeout(() => {
-                    loader.style.display = "none";
-                }, 700);
+                    cyberLoader.style.display = "none";
+                }, 800);
             }
-        }, 2400); // Ekranda kalma süresi (2.4 saniye)
+        }, 2500); // Ekranda kalma süresi (2.5 Saniye)
     });
 </script>
 
